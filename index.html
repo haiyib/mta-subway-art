@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MTA Subway Art — A Visual Census</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <header>
+    <h1>Art Underground</h1>
+    <p class="subtitle">
+      A visual census of artwork across New York City's subway system
+    </p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       INTRO  — plain prose before scrollytelling starts
+  ════════════════════════════════════════════════════════════ -->
+  <section id="intro">
+    <p>
+      <!-- TODO: Write your intro paragraph here.
+           Who commissioned this work? How many pieces exist?
+           What question are you answering?
+      -->
+      Replace this with your intro text. A sentence or two setting the scene
+      works best — readers should know what they're looking at before the
+      chart appears.
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCROLLYTELLING — sticky chart + scrolling step text
+  ════════════════════════════════════════════════════════════ -->
+  <section id="scrolly">
+
+    <!-- Sticky chart panel (left) -->
+    <figure id="chart-container">
+      <svg id="chart"></svg>
+      <div id="tooltip" class="hidden"></div>
+    </figure>
+
+    <!-- Scrolling narrative steps (right) -->
+    <article id="steps">
+
+      <div class="step" data-step="0">
+        <div class="step-content">
+          <h3>The full picture</h3>
+          <p>
+            <!-- TODO: Step 0 — introduce the overview.
+                 Example: "Every dot below is a real work of art living
+                 somewhere in the New York subway. Each shape represents
+                 a different subject category."
+            -->
+            [Step 0 text — overview of all categories]
+          </p>
+        </div>
+      </div>
+
+      <div class="step" data-step="1">
+        <div class="step-content">
+          <h3><!-- TODO: category or theme name --></h3>
+          <p>
+            <!-- TODO: Step 1 — highlight one category or story beat.
+                 Example: "Abstract work dominates — 154 pieces, nearly
+                 a third of everything in the collection."
+            -->
+            [Step 1 text — first story beat]
+          </p>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="step-content">
+          <h3><!-- TODO: --></h3>
+          <p>
+            <!-- TODO: Step 2 -->
+            [Step 2 text — second story beat]
+          </p>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="step-content">
+          <h3>Explore every piece</h3>
+          <p>
+            <!-- TODO: Step 3 — call to action for interactivity.
+                 Example: "Hover any shape to see the artwork, artist,
+                 and the station where it lives."
+            -->
+            [Step 3 text — invite the reader to explore]
+          </p>
+        </div>
+      </div>
+
+      <!-- Add more steps by duplicating the block above and
+           incrementing data-step. Then add a matching case in
+           main.js → applyStep(). -->
+
+    </article>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       OUTRO  — closing prose after scrollytelling ends
+  ════════════════════════════════════════════════════════════ -->
+  <section id="outro">
+    <p>
+      <!-- TODO: Write your closing paragraph.
+           Sources, methodology, credits, next steps.
+      -->
+      [Outro text — credits, methodology, data sources]
+    </p>
+  </section>
+
+  <!-- ─── Dependencies (loaded from CDN — no build step needed) ─── -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/scrollama@3/build/scrollama.min.js"></script>
+  <script src="https://unpkg.com/papaparse@5/papaparse.min.js"></script>
+
+  <!-- ─── Your code ─── -->
+  <script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+/* ─────────────────────────────────────────────────────────────
+   MTA Subway Art — clean editorial style
+   ───────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-sans:    'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif:   Georgia, 'Times New Roman', serif;
+  --color-text:   #1a1a1a;
+  --color-sub:    #555;
+  --color-muted:  #999;
+  --color-bg:     #fafafa;
+  --color-white:  #ffffff;
+  --color-accent: #0039a6;   /* MTA blue — also used for step card border */
+  --color-border: #e0e0e0;
+  --max-width:    1100px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+════════════════════════════════════════════════════════════ */
+header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 24px 48px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: var(--color-sub);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INTRO
+════════════════════════════════════════════════════════════ */
+#intro {
+  max-width: 680px;
+  margin: 64px auto;
+  padding: 0 24px;
+  font-size: 1.15rem;
+  color: var(--color-sub);
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLLYTELLING LAYOUT
+════════════════════════════════════════════════════════════ */
+#scrolly {
+  position: relative;
+  display: flex;
+  gap: 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Sticky chart (left column) ── */
+#chart-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#chart {
+  width: 100%;
+  height: 90vh;
+  overflow: visible;
+}
+
+/* ── Scrolling text (right column) ── */
+#steps {
+  width: 38%;
+  padding-left: 40px;
+}
+
+.step {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+/* First step has extra top padding so chart is visible on load */
+.step:first-child {
+  padding-top: 40vh;
+}
+
+.step-content {
+  background: var(--color-white);
+  border-left: 3px solid var(--color-accent);
+  padding: 20px 24px;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  max-width: 320px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+/* Active step card is fully visible */
+.step.is-active .step-content {
+  opacity: 1;
+}
+
+.step-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.step-content p {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TOOLTIP
+════════════════════════════════════════════════════════════ */
+#tooltip {
+  position: fixed;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  max-width: 260px;
+  pointer-events: none;
+  z-index: 200;
+  transition: opacity 0.12s;
+}
+
+#tooltip.hidden {
+  opacity: 0;
+}
+
+#tooltip img {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: block;
+  object-fit: cover;
+  max-height: 180px;
+}
+
+.tt-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.tt-artist {
+  font-size: 0.8rem;
+  color: var(--color-sub);
+}
+
+.tt-meta {
+  font-size: 0.74rem;
+  color: var(--color-muted);
+  margin-top: 5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CHART — SVG text & label elements
+════════════════════════════════════════════════════════════ */
+.cat-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  fill: #444;
+  text-anchor: middle;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cat-count {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  fill: var(--color-muted);
+  text-anchor: middle;
+}
+
+/* ── Dot states ── */
+.dot {
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.25s ease;
+}
+
+.dot:hover {
+  transform: scale(1.5);
+}
+
+.dot.dimmed {
+  opacity: 0.08;
+}
+
+/* Highlight ring on hover (drawn as a separate element, optional) */
+.dot-ring {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   OUTRO
+════════════════════════════════════════════════════════════ */
+#outro {
+  max-width: 680px;
+  margin: 80px auto 120px;
+  padding: 60px 24px 0;
+  font-size: 1.05rem;
+  color: var(--color-sub);
+  border-top: 1px solid var(--color-border);
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  #scrolly {
+    flex-direction: column;
+  }
+
+  #chart-container {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+  }
+
+  #chart {
+    height: 55vh;
+  }
+
+  #steps {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .step-content {
+    max-width: 100%;
+  }
+}
