@@ -1,25 +1,13 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 //  MTA Subway Art — D3 + Scrollama
-//  Each dot = 1 artwork. Hover to see details. Scroll to reveal the story.
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 
 const DATA_PATH = "data/artworks.csv";
 
-// Category config: icon character, color, display label
-// TODO: Swap icon characters for proper SVG symbols once you've decided on them.
-//       Right now these are Unicode stand-ins so you can see the layout.
-//       Suggested icons to replace:
-//         florals   → a custom SVG flower path
-//         humans    → a person silhouette path
-//         animals   → a paw / bird / fish path matching your data
-//         cityscape → a building outline
-//         landscape → a mountain / tree
-//         abstract  → a geometric diamond or star
-//         culture   → a mask / instrument
-//         objects   → a box / lamp
-//         words     → a speech bubble / quotation mark
+// Category config — icon character, color, display label
+// TODO: Replace icon characters with proper SVG symbol paths later
 const CATEGORY_CONFIG = {
   "abstract":  { icon: "◈", color: "#4a4a4a", label: "Abstract"  },
   "humans":    { icon: "◎", color: "#3A7CA5", label: "Humans"    },
@@ -32,38 +20,49 @@ const CATEGORY_CONFIG = {
   "words":     { icon: "❝", color: "#1F9D8A", label: "Words"     },
 };
 
-// Order of categories in the 3×3 grid (matches your notebook layout)
-// TODO: Adjust to match the exact category names in your CSV's "category" column
+// Order along the x-axis (left → right)
+// TODO: Adjust to match exact category strings in your CSV
 const CATEGORY_ORDER = [
   "abstract",  "humans",   "cityscape",
   "florals",   "animals",  "landscape",
   "culture",   "objects",  "words",
 ];
 
-const GRID_COLS    = 3;   // categories per row
-const DOTS_PER_ROW = 12;  // dots per row within a single category block
-const DOT_SIZE     = 12;  // px — font size of each icon character
-const DOT_GAP      = 4;   // px gap between dots
-const DOT_STEP     = DOT_SIZE + DOT_GAP;
+// Two categories shown in the hero section
+const HERO_CATEGORIES = ["abstract", "florals"];
+
+// Dot size (font-size for icon characters)
+const DOT_SIZE = 8;   // px
+const DOT_GAP  = 2;   // px between dots
+const DOT_STEP = DOT_SIZE + DOT_GAP;
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
 
-let allData       = [];   // all parsed CSV rows
-let byCategory    = {};   // Map: category string → array of row objects
-let currentStep   = -1;
+let allData    = [];
+let byCategory = {};
+let currentStep = -1;
 
-// ─── SVG + TOOLTIP SETUP ─────────────────────────────────────────────────────
+// ─── SVG ELEMENTS ────────────────────────────────────────────────────────────
 
-const svg     = d3.select("#chart");
-const tooltip = d3.select("#tooltip");
+const mainSvg   = d3.select("#chart");
+const heroSvg   = d3.select("#hero-chart");
+const tooltip   = d3.select("#tooltip");
 
-let W, H;   // chart dimensions in px
+let W = 0, H = 0;        // main chart dimensions
+let HW = 0, HH = 0;      // hero chart dimensions
 
-function measure() {
+function measureMain() {
   const el = document.getElementById("chart");
   W = el.clientWidth;
   H = el.clientHeight;
-  svg.attr("viewBox", `0 0 ${W} ${H}`);
+  mainSvg.attr("viewBox", `0 0 ${W} ${H}`);
+}
+
+function measureHero() {
+  const el = document.getElementById("hero-chart");
+  HW = el.clientWidth;
+  HH = el.clientHeight;
+  heroSvg.attr("viewBox", `0 0 ${HW} ${HH}`);
 }
 
 // ─── LOAD DATA ───────────────────────────────────────────────────────────────
@@ -74,71 +73,256 @@ Papa.parse(DATA_PATH, {
   skipEmptyLines: true,
   complete: ({ data }) => {
     allData = data;
-
-    // Normalise category values to lowercase so they match CATEGORY_CONFIG keys
     allData.forEach(d => {
       d.category = (d.category || "").toLowerCase().trim();
     });
-
     byCategory = d3.group(allData, d => d.category);
 
-    measure();
-    drawChart();
+    measureHero();
+    measureMain();
+
+    drawHero();
+    drawCoordinateChart();
     initScrollama();
   },
-  error: (err) => {
-    console.error("CSV load error:", err);
-  },
+  error: err => console.error("CSV load error:", err),
 });
 
 window.addEventListener("resize", () => {
-  measure();
-  drawChart();
+  measureHero();
+  measureMain();
+  drawHero();
+  drawCoordinateChart();
   applyStep(currentStep);
 });
 
-// ─── DRAW ─────────────────────────────────────────────────────────────────────
+// ─── GRID PAPER PATTERN (SVG defs) ───────────────────────────────────────────
+// Adds a reusable grid pattern to an SVG's <defs>.
+// Call once per SVG, then fill a rect with url(#grid-NNN).
 
-function drawChart() {
-  svg.selectAll("*").remove();
+function addGridPattern(svgEl, id) {
+  // Remove any existing defs to avoid duplicates on redraw
+  svgEl.select("defs").remove();
 
-  const gridRows = Math.ceil(CATEGORY_ORDER.length / GRID_COLS);
-  const padX = 32, padY = 40;
+  const defs = svgEl.append("defs");
 
-  const cellW = (W - padX * 2) / GRID_COLS;
-  const cellH = (H - padY * 2) / gridRows;
+  // Minor grid: every 20px
+  defs.append("pattern")
+    .attr("id", `minor-${id}`)
+    .attr("width", 20).attr("height", 20)
+    .attr("patternUnits", "userSpaceOnUse")
+    .append("path")
+      .attr("d", "M 20 0 L 0 0 0 20")
+      .attr("fill", "none")
+      .attr("stroke", "rgba(150,180,210,0.25)")
+      .attr("stroke-width", 0.5);
 
-  CATEGORY_ORDER.forEach((cat, i) => {
-    const col  = i % GRID_COLS;
-    const row  = Math.floor(i / GRID_COLS);
-    const cx   = padX + col * cellW + cellW / 2;
-    const cy   = padY + row * cellH + cellH / 2;
+  // Major grid: every 100px, references minor
+  const major = defs.append("pattern")
+    .attr("id", `grid-${id}`)
+    .attr("width", 100).attr("height", 100)
+    .attr("patternUnits", "userSpaceOnUse");
 
-    const cfg   = CATEGORY_CONFIG[cat] || { icon: "●", color: "#999", label: cat };
+  major.append("rect")
+    .attr("width", 100).attr("height", 100)
+    .attr("fill", `url(#minor-${id})`);
+
+  major.append("path")
+    .attr("d", "M 100 0 L 0 0 0 100")
+    .attr("fill", "none")
+    .attr("stroke", "rgba(150,180,210,0.55)")
+    .attr("stroke-width", 1);
+
+  return `url(#grid-${id})`;
+}
+
+// ─── HERO CHART ──────────────────────────────────────────────────────────────
+// Shows two dot-matrix previews before the headline.
+
+function drawHero() {
+  heroSvg.selectAll("*").remove();
+
+  const gridFill = addGridPattern(heroSvg, "hero");
+
+  // Background rect with grid
+  heroSvg.append("rect")
+    .attr("width", HW).attr("height", HH)
+    .attr("fill", gridFill);
+
+  const padX  = 60;
+  const padY  = 40;
+  const halfW = (HW - padX * 2) / 2;
+
+  HERO_CATEGORIES.forEach((cat, i) => {
     const items = byCategory.get(cat) || [];
+    const cfg   = CATEGORY_CONFIG[cat] || { icon: "●", color: "#999", label: cat };
 
-    const g = svg.append("g")
-      .attr("class", `cat-group cat-${cat}`)
+    const cx = padX + i * halfW + halfW / 2;
+    const cy = HH / 2 - 20;
+
+    // How many dots fit per row in this half
+    const dotsPerRow = Math.max(4, Math.floor(halfW * 0.65 / DOT_STEP));
+    const totalRows  = Math.ceil(items.length / dotsPerRow);
+    const matrixH    = totalRows * DOT_STEP;
+
+    const g = heroSvg.append("g")
+      .attr("class", `hero-cat hero-cat-${cat}`)
       .attr("transform", `translate(${cx}, ${cy})`);
 
-    // ── Dot matrix ──────────────────────────────────────────────────────────
-    const dotsWide = Math.min(items.length, DOTS_PER_ROW);
-    const dotsHigh = Math.ceil(items.length / DOTS_PER_ROW);
-
-    // Centre the matrix vertically within the cell
-    const matrixH = dotsHigh * DOT_STEP;
-    const offsetY = -(matrixH / 2);   // shift up so label has room below
-
     items.forEach((d, j) => {
-      const dotCol = j % DOTS_PER_ROW;
-      const dotRow = Math.floor(j / DOTS_PER_ROW);
-
-      // x: centred around 0
-      const dx = (dotCol - dotsWide / 2 + 0.5) * DOT_STEP;
-      // y: top of matrix + row offset
-      const dy = offsetY + dotRow * DOT_STEP;
+      const col = j % dotsPerRow;
+      const row = Math.floor(j / dotsPerRow);
+      const dx  = (col - dotsPerRow / 2 + 0.5) * DOT_STEP;
+      const dy  = (row - totalRows  / 2 + 0.5) * DOT_STEP;
 
       g.append("text")
+        .attr("x", dx).attr("y", dy)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("font-size", `${DOT_SIZE + 2}px`)
+        .attr("fill", cfg.color)
+        .attr("opacity", 0.9)
+        .text(cfg.icon);
+    });
+
+    // Label
+    g.append("text")
+      .attr("y", matrixH / 2 + 18)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "11px")
+      .attr("font-family", "Georgia, serif")
+      .attr("fill", "#333")
+      .attr("letter-spacing", "0.08em")
+      .text(cfg.label.toUpperCase());
+
+    g.append("text")
+      .attr("y", matrixH / 2 + 32)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "10px")
+      .attr("font-family", "Georgia, serif")
+      .attr("fill", "#888")
+      .text(`${items.length} works`);
+  });
+
+  // Vertical divider between the two charts
+  heroSvg.append("line")
+    .attr("x1", HW / 2).attr("y1", padY)
+    .attr("x2", HW / 2).attr("y2", HH - padY)
+    .attr("stroke", "rgba(150,180,210,0.5)")
+    .attr("stroke-width", 1)
+    .attr("stroke-dasharray", "4,4");
+}
+
+// ─── MAIN COORDINATE CHART ───────────────────────────────────────────────────
+// All 9 categories as columns above an x-axis, with y-axis on the left.
+
+function drawCoordinateChart() {
+  mainSvg.selectAll("*").remove();
+
+  const gridFill = addGridPattern(mainSvg, "main");
+
+  // Background
+  mainSvg.append("rect")
+    .attr("width", W).attr("height", H)
+    .attr("fill", gridFill);
+
+  const margin = { top: 30, right: 16, bottom: 72, left: 44 };
+  const plotW  = W - margin.left - margin.right;
+  const plotH  = H - margin.top  - margin.bottom;
+
+  const g = mainSvg.append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  const nCats     = CATEGORY_ORDER.length;
+  const colWidth  = plotW / nCats;
+
+  // How many dots fit across one category column (leave padding on each side)
+  const dotsPerRow = Math.max(3, Math.floor(colWidth * 0.72 / DOT_STEP));
+
+  // Tallest column
+  const maxItems = d3.max(CATEGORY_ORDER, cat => (byCategory.get(cat) || []).length);
+  const maxRows  = Math.ceil(maxItems / dotsPerRow);
+
+  // Y scale: maps row count → pixel from top of plot area
+  const yScale = d3.scaleLinear()
+    .domain([0, maxRows])
+    .range([plotH, 0]);
+
+  // ── Horizontal grid lines (light, behind everything) ──
+  const yTicks = d3.range(0, maxRows + 1, Math.ceil(maxRows / 5));
+  yTicks.forEach(rowCount => {
+    const y = yScale(rowCount);
+    g.append("line")
+      .attr("x1", 0).attr("y1", y)
+      .attr("x2", plotW).attr("y2", y)
+      .attr("stroke", "rgba(150,180,210,0.3)")
+      .attr("stroke-width", 0.75)
+      .attr("stroke-dasharray", "3,3");
+  });
+
+  // ── Y axis ──
+  g.append("line")
+    .attr("class", "axis-line")
+    .attr("x1", 0).attr("y1", 0)
+    .attr("x2", 0).attr("y2", plotH);
+
+  // Y tick marks + labels (number of artworks)
+  yTicks.forEach(rowCount => {
+    const artworkCount = rowCount * dotsPerRow;
+    const y = yScale(rowCount);
+
+    g.append("line")
+      .attr("x1", -4).attr("y1", y)
+      .attr("x2",  0).attr("y2", y)
+      .attr("stroke", "#555")
+      .attr("stroke-width", 0.75);
+
+    g.append("text")
+      .attr("x", -7).attr("y", y)
+      .attr("text-anchor", "end")
+      .attr("dominant-baseline", "middle")
+      .attr("font-size", "8px")
+      .attr("font-family", "Georgia, serif")
+      .attr("fill", "#777")
+      .text(artworkCount > 0 ? artworkCount : "");
+  });
+
+  // Y axis title
+  g.append("text")
+    .attr("transform", `translate(-32, ${plotH / 2}) rotate(-90)`)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "9px")
+    .attr("font-family", "Georgia, serif")
+    .attr("fill", "#777")
+    .attr("letter-spacing", "0.06em")
+    .text("NUMBER OF WORKS");
+
+  // ── X axis ──
+  g.append("line")
+    .attr("class", "axis-line")
+    .attr("x1", 0).attr("y1", plotH)
+    .attr("x2", plotW).attr("y2", plotH);
+
+  // ── Dot columns + x-axis labels ──
+  CATEGORY_ORDER.forEach((cat, i) => {
+    const items = byCategory.get(cat) || [];
+    const cfg   = CATEGORY_CONFIG[cat] || { icon: "●", color: "#999", label: cat };
+    const cx    = (i + 0.5) * colWidth;  // center of this column
+
+    const catG = g.append("g")
+      .attr("class", `cat-group cat-${cat}`)
+      .attr("transform", `translate(${cx}, 0)`);
+
+    // Dots grow upward from the x-axis
+    items.forEach((d, j) => {
+      const col = j % dotsPerRow;
+      const row = Math.floor(j / dotsPerRow);
+
+      // x: centered in column; y: from bottom upward
+      const dx = (col - dotsPerRow / 2 + 0.5) * DOT_STEP;
+      const dy = plotH - (row + 0.5) * DOT_STEP - 3;
+
+      catG.append("text")
         .attr("class", "dot")
         .attr("data-cat", cat)
         .attr("x", dx)
@@ -148,62 +332,98 @@ function drawChart() {
         .attr("font-size", `${DOT_SIZE}px`)
         .attr("fill", cfg.color)
         .text(cfg.icon)
-        .datum(d)   // bind the data row so tooltip can access it
-        .on("mouseenter", (event, d) => showTooltip(event, d))
-        .on("mousemove",  (event)    => moveTooltip(event))
-        .on("mouseleave", ()         => hideTooltip());
+        .datum(d)
+        .on("mouseenter", (e, d) => showTooltip(e, d))
+        .on("mousemove",  (e)    => moveTooltip(e))
+        .on("mouseleave", ()     => hideTooltip());
     });
 
-    // ── Category label + count ───────────────────────────────────────────────
-    const labelY = offsetY + matrixH + 10;
+    // X axis tick
+    g.append("line")
+      .attr("x1", cx).attr("y1", plotH)
+      .attr("x2", cx).attr("y2", plotH + 4)
+      .attr("stroke", "#555")
+      .attr("stroke-width", 0.75);
 
+    // X axis label (category name)
     g.append("text")
-      .attr("class", "cat-label")
-      .attr("y", labelY)
+      .attr("class", "axis-label")
+      .attr("x", cx)
+      .attr("y", plotH + 14)
       .text(cfg.label.toUpperCase());
 
+    // Count below label
     g.append("text")
       .attr("class", "cat-count")
-      .attr("y", labelY + 14)
-      .text(`${items.length} work${items.length !== 1 ? "s" : ""}`);
+      .attr("x", cx)
+      .attr("y", plotH + 25)
+      .text(items.length);
   });
+}
+
+// ─── SCROLL STEP LOGIC ───────────────────────────────────────────────────────
+
+function applyStep(step) {
+  currentStep = step;
+
+  // Reset
+  mainSvg.selectAll(".dot").classed("dimmed", false);
+
+  switch (step) {
+
+    case 0:
+      // All visible, but abstract highlighted — everything else dimmed
+      mainSvg.selectAll(".dot")
+        .filter(function() {
+          return d3.select(this).attr("data-cat") !== "abstract";
+        })
+        .classed("dimmed", true);
+      break;
+
+    case 1:
+      // TODO: Your first story beat
+      // Example: highlight florals
+      mainSvg.selectAll(".dot")
+        .filter(function() {
+          return d3.select(this).attr("data-cat") !== "florals";
+        })
+        .classed("dimmed", true);
+      break;
+
+    case 2:
+      // TODO: Your second story beat
+      break;
+
+    case 3:
+      // All visible — invite exploration
+      break;
+  }
 }
 
 // ─── TOOLTIP ─────────────────────────────────────────────────────────────────
 
 function showTooltip(event, d) {
   let html = "";
-
-  // Image (only shown if image_url column is filled in)
   if (d.image_url && d.image_url.trim()) {
     html += `<img src="${d.image_url.trim()}" alt="${d.title || "artwork"}" />`;
   }
-
   html += `<div class="tt-title">${d.title || "Untitled"}</div>`;
-
   if (d.artist && d.artist.trim()) {
     html += `<div class="tt-artist">${d.artist}</div>`;
   }
-
   const meta = [d.station, d.borough, d.year].filter(v => v && v.trim()).join(" · ");
-  if (meta) {
-    html += `<div class="tt-meta">${meta}</div>`;
-  }
+  if (meta) html += `<div class="tt-meta">${meta}</div>`;
 
   tooltip.html(html).classed("hidden", false);
   moveTooltip(event);
 }
 
 function moveTooltip(event) {
-  const ttW = 270;
-  const ttH = 220;
+  const ttW = 260, ttH = 220;
   let x = event.clientX + 16;
   let y = event.clientY - 10;
-
-  // Keep tooltip inside viewport
   if (x + ttW > window.innerWidth)  x = event.clientX - ttW - 16;
   if (y + ttH > window.innerHeight) y = window.innerHeight - ttH - 10;
-
   tooltip.style("left", x + "px").style("top", y + "px");
 }
 
@@ -211,73 +431,19 @@ function hideTooltip() {
   tooltip.classed("hidden", true);
 }
 
-// ─── SCROLL STEP LOGIC ───────────────────────────────────────────────────────
-// Each case corresponds to a data-step="N" in index.html.
-// Modify these to tell your story: dim categories, change colors, resize dots.
-
-function applyStep(step) {
-  currentStep = step;
-
-  // Reset everything first
-  svg.selectAll(".dot").classed("dimmed", false);
-
-  switch (step) {
-
-    case 0:
-      // ── Overview: show all categories equally ──
-      // Nothing to do — reset above is sufficient.
-      break;
-
-    case 1:
-      // ── TODO: Highlight one category, dim the rest ──
-      // Example below highlights "abstract". Change to match your story beat.
-      svg.selectAll(".dot")
-        .filter(function() {
-          return d3.select(this).attr("data-cat") !== "abstract";
-        })
-        .classed("dimmed", true);
-      break;
-
-    case 2:
-      // ── TODO: Your second story beat ──
-      // Example: highlight two categories
-      svg.selectAll(".dot")
-        .filter(function() {
-          const cat = d3.select(this).attr("data-cat");
-          return cat !== "florals" && cat !== "animals";
-        })
-        .classed("dimmed", true);
-      break;
-
-    case 3:
-      // ── Everything visible — invite exploration ──
-      // No dimming. All dots are interactive.
-      break;
-
-    // Add more cases here as you add more .step divs in index.html
-  }
-}
-
-// ─── SCROLLAMA INIT ──────────────────────────────────────────────────────────
+// ─── SCROLLAMA ───────────────────────────────────────────────────────────────
 
 function initScrollama() {
   const scroller = scrollama();
 
   scroller
-    .setup({
-      step:    ".step",
-      offset:  0.5,      // trigger when step hits 50% of viewport height
-      debug:   false,    // set true to see the trigger line while building
-    })
-    .onStepEnter(({ index, direction }) => {
-      // Highlight the active step card
+    .setup({ step: ".step", offset: 0.5, debug: false })
+    .onStepEnter(({ index }) => {
       d3.selectAll(".step").classed("is-active", false);
       d3.select(`.step[data-step="${index}"]`).classed("is-active", true);
-
       applyStep(index);
     })
     .onStepExit(({ index, direction }) => {
-      // When scrolling back above the first step, reset chart
       if (direction === "up" && index === 0) {
         d3.selectAll(".step").classed("is-active", false);
         applyStep(-1);

@@ -4,58 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MTA Subway Art — A Visual Census</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- ═══════════════════════════════════════════════════════════
-       HEADER
+       HERO — two preview charts before the headline
   ════════════════════════════════════════════════════════════ -->
-  <header>
-    <h1>Art Underground</h1>
-    <p class="subtitle">
-      A visual census of artwork across New York City's subway system
-    </p>
-  </header>
+  <section id="hero">
+    <svg id="hero-chart"></svg>
+  </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       INTRO  — plain prose before scrollytelling starts
+       HEADLINE + BYLINE + INTRO
   ════════════════════════════════════════════════════════════ -->
-  <section id="intro">
+  <div class="content">
+
+    <div class="header">
+      <h1>Art Underground</h1>
+      <p class="subhead">A visual census of artwork across New York City's subway system</p>
+    </div>
+
+    <div class="byline">
+      <p>By <a href="#"><!-- TODO: Your name --></a> &nbsp;·&nbsp; <!-- TODO: Date --></p>
+    </div>
+
     <p>
-      <!-- TODO: Write your intro paragraph here.
-           Who commissioned this work? How many pieces exist?
-           What question are you answering?
-      -->
+      <!-- TODO: Write your intro paragraph here. -->
       Replace this with your intro text. A sentence or two setting the scene
       works best — readers should know what they're looking at before the
       chart appears.
     </p>
-  </section>
+
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════════
-       SCROLLYTELLING — sticky chart + scrolling step text
+       SCROLLYTELLING — sticky coordinate chart + scrolling steps
   ════════════════════════════════════════════════════════════ -->
   <section id="scrolly">
 
-    <!-- Sticky chart panel (left) -->
+    <!-- Sticky chart (left) -->
     <figure id="chart-container">
       <svg id="chart"></svg>
       <div id="tooltip" class="hidden"></div>
     </figure>
 
-    <!-- Scrolling narrative steps (right) -->
+    <!-- Scrolling steps (right) -->
     <article id="steps">
 
       <div class="step" data-step="0">
         <div class="step-content">
           <h3>The full picture</h3>
           <p>
-            <!-- TODO: Step 0 — introduce the overview.
-                 Example: "Every dot below is a real work of art living
-                 somewhere in the New York subway. Each shape represents
-                 a different subject category."
-            -->
+            <!-- TODO: Step 0 -->
             [Step 0 text — overview of all categories]
           </p>
         </div>
@@ -63,65 +67,46 @@
 
       <div class="step" data-step="1">
         <div class="step-content">
-          <h3><!-- TODO: category or theme name --></h3>
-          <p>
-            <!-- TODO: Step 1 — highlight one category or story beat.
-                 Example: "Abstract work dominates — 154 pieces, nearly
-                 a third of everything in the collection."
-            -->
-            [Step 1 text — first story beat]
-          </p>
+          <h3><!-- TODO --></h3>
+          <p>[Step 1 text — first story beat]</p>
         </div>
       </div>
 
       <div class="step" data-step="2">
         <div class="step-content">
-          <h3><!-- TODO: --></h3>
-          <p>
-            <!-- TODO: Step 2 -->
-            [Step 2 text — second story beat]
-          </p>
+          <h3><!-- TODO --></h3>
+          <p>[Step 2 text — second story beat]</p>
         </div>
       </div>
 
       <div class="step" data-step="3">
         <div class="step-content">
           <h3>Explore every piece</h3>
-          <p>
-            <!-- TODO: Step 3 — call to action for interactivity.
-                 Example: "Hover any shape to see the artwork, artist,
-                 and the station where it lives."
-            -->
-            [Step 3 text — invite the reader to explore]
-          </p>
+          <p>[Step 3 text — invite exploration]</p>
         </div>
       </div>
-
-      <!-- Add more steps by duplicating the block above and
-           incrementing data-step. Then add a matching case in
-           main.js → applyStep(). -->
 
     </article>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       OUTRO  — closing prose after scrollytelling ends
+       OUTRO + FOOTER
   ════════════════════════════════════════════════════════════ -->
-  <section id="outro">
+  <div class="content">
     <p>
-      <!-- TODO: Write your closing paragraph.
-           Sources, methodology, credits, next steps.
-      -->
+      <!-- TODO: Closing paragraph — sources, methodology, credits. -->
       [Outro text — credits, methodology, data sources]
     </p>
-  </section>
+  </div>
 
-  <!-- ─── Dependencies (loaded from CDN — no build step needed) ─── -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://unpkg.com/scrollama@3/build/scrollama.min.js"></script>
+  <div class="footer">
+    <p><!-- TODO: Footer credits, data source links --></p>
+  </div>
+
+  <!-- Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.2.0/scrollama.min.js"></script>
   <script src="https://unpkg.com/papaparse@5/papaparse.min.js"></script>
-
-  <!-- ─── Your code ─── -->
   <script src="main.js"></script>
 
 </body>
