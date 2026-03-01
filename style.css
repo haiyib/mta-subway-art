@@ -1,19 +1,16 @@
-/* ─────────────────────────────────────────────────────────────
-   Base — copied from jsoma's template
-   ───────────────────────────────────────────────────────────── */
-
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+
 body {
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-rendering: optimizeLegibility;
 
-    /* ── Grid paper background ── */
+    /* ── Grid paper background — fixed (does not scroll) ── */
     background-color: #f7f7f2;
     background-image:
         linear-gradient(rgba(150, 180, 210, 0.45) 1px, transparent 1px),
@@ -22,8 +19,8 @@ body {
         linear-gradient(90deg, rgba(150, 180, 210, 0.15) 1px, transparent 1px);
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
     background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+    background-attachment: fixed; /* ← keeps the grid locked while scrolling */
 }
-
 .content {
     max-width: 640px;
     margin: auto;
@@ -66,6 +63,7 @@ h1 {
 
 .subhead {
     font-family: 'Lora', Georgia, serif;
+    margin-top: 0.75em;
 }
 
 iframe, img, video {
@@ -116,8 +114,6 @@ code {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    /* subtle darker border at bottom to separate from content */
-    border-bottom: 2px solid rgba(150, 180, 210, 0.5);
 }
 
 #hero-chart {
@@ -319,4 +315,18 @@ code {
     }
 
     .step-content { max-width: 100%; }
+}
+
+/* ── Remove grid lines from all SVG charts ── */
+.grid line,
+.grid path,
+svg .grid line,
+svg .grid path {
+    stroke: none;
+    display: none;
+}
+
+/* Also hide any tick lines if you want a fully clean look */
+.tick line {
+    display: none;
 }

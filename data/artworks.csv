@@ -1,4 +1,489 @@
-id,title,artist,category,year,station,borough,image_url,description
-1,Placeholder Title,Artist Name,abstract,2000,14 St-8 Av,Manhattan,,Example abstract work
-2,Placeholder Title 2,Artist Name 2,florals,1998,72 St,Brooklyn,,Example floral work
-3,Placeholder Title 3,Artist Name 3,humans,2005,Grand Central,Manhattan,,Example work with human figures
+Artist,Station,Line,Year,Title,Zipcode,Borough,Category
+Students of PS 126 and PS 20,Brooklyn Bridge/City Hall,IRT East Side Line,,"Buildings, Boats, and a Bridge",10000,Manhattan,Cityscape
+Mark Gibian,Brooklyn Bridge/City Hall,IRT East Side Line,1996,Cable Crossing,10000,Manhattan,Absract
+Gerald Marks,28th Street,IRT East Side Line,1996,7 waves 4 twenty eight,10001,Manhattan,Landscape
+Elizabeth Grajales,34th Street/Penn Station,IRT West Side Line,1997,A Bird's Life,10001,Manhattan,Animal
+Mark Hadjipateras,28th Street,BMT Broadway Line,2002,City Dwellers,10001,Manhattan,Absract
+Eric Fischl,34th Street/Penn Station,IND 8th Avenue Line,2001,Garden of Circus Delights,10001,Manhattan,Animal
+Tom Otterness,"14th Street, 8th Avenue",IND 8th Avenue Line,2000,Life Underground,10001,Manhattan,Human
+Tom Otterness,"14th Street, 8th Avenue",IND 8th Avenue Line,2000,Life Underground,10001,Manhattan,Animal
+Ross Lewis,"14th Street, 8th Avenue",IND 8th Avenue Line,1989,Parallel Motion,10001,Manhattan,Human
+Ross Lewis,"14th Street, 8th Avenue",IND 8th Avenue Line,1989,Parallel Motion,10001,Manhattan,Absract
+Nancy Blum,28th Street,IRT East Side Line,2019,Roaming Underfoot,10001,Manhattan,Floral
+Diana Al-Hadid,34th Street/Penn Station,IRT West Side Line,2018,The Arches of Old Penn Station; The Arc of Gradiva,10001,Manhattan,Cityscape
+Diana Al-Hadid,34th Street/Penn Station,IRT West Side Line,,The Time Telling,10001,Manhattan,Object
+Elizabeth Grajales,34th Street/Penn Station,IRT West Side Line,1998,When the Animals Speak,10001,Manhattan,Animal
+Fred Tomaselli,14th Street,IND 6th Avenue Line,2024,Wild Things,10001,Manhattan,Animal
+Ming Fay,"Delancey Street, Essex Street",IND 6th Avenue Line,2004,Delancey Orchard,10002,Manhattan,Landscape
+Noel Copeland,East Broadway,IND 6th Avenue Line,1992,Displacing Details,10002,Manhattan,Human
+Noel Copeland,East Broadway,IND 6th Avenue Line,1992,Displacing Details,10002,Manhattan,Cityscape
+Glendalys Medina,Grand Street,BMT Canarsie Line,2023,Gratitudes Off Grand,10002,Manhattan,Absract
+Ming Fay,"Delancey Street, Essex Street",IND 6th Avenue Line,2004,Shad Crossing,10002,Manhattan,Animal
+Gardner/Heller,Grand Street,IND 6th Avenue Line,,Trains of Thought,10002,Manhattan,Object
+Janet Zweig,Prince Street,BMT Broadway Line,2004,Carrying On,10003,Manhattan,Human
+Jennifer Cecere,14th Street/Union Square,IRT East Side Line,1995,Chairs,10003,Manhattan,Object
+Chiho Aoshima,14th Street/Union Square,BMT Broadway Line,2005,City Glow,10003,Manhattan,Cityscape
+Mary Miss,14th Street/Union Square,IRT East Side Line,1998,Framing Union Square,10003,Manhattan,Absract
+Chiho Aoshima,14th Street/Union Square,IRT East Side Line,2005,Paradise,10003,Manhattan,Floral
+Milton Glaser,Astor Place,IRT East Side Line,1986,Untitled,10003,Manhattan,Absract
+,Whitehall Street,BMT Broadway Line,,Bowery Wall,10004,Manhattan,Absract
+Frank Giorgini,Whitehall Street,BMT Broadway Line,2000,Passages,10004,Manhattan,Animal
+Frank Giorgini,Whitehall Street,BMT Broadway Line,2000,Passages,10004,Manhattan,Cityscape
+Harry Roseman,Wall Street,IRT West Side Line,1990,Subway Wall,10005,Manhattan,Landscape
+Ann Hamilton,Cortlandt Street-World Trade Center,IRT West Side Line,2018,Chorus,10006,Manhattan,Culture
+Ann Hamilton,Cortlandt Street-World Trade Center,IRT West Side Line,2018,Chorus,10006,Manhattan,Words
+Jones/Ginzel/Piras,"Chambers Street/World Trade Center, Park Place",IND 8th Avenue Line,1998,Oculus,10006,Manhattan,Human
+Margie Hughto,Cortlandt Street-World Trade Center,BMT Broadway Line,1997,"Trade, Treasure, and Travel",10006,Manhattan,Animal
+Maku,Clinton/Washington Aves.,IND Crosstown Line,,Untitled,10006,Manhattan,Absract
+Valerie Jaudon,23rd Street,IRT East Side Line,1988,Long Division,10010,Manhattan,Absract
+Keith Godard,23rd Street,BMT Broadway Line,2002,Memories of Twenty-Third Street,10010,Manhattan,Object
+William Wegman,23rd Street,IND 6th Avenue Line,2018,Stationary Figures,10010,Manhattan,Animal
+Vito Acconci,West 8th Street,BMT Brighton Line,2005,Wavewall,10011,Manhattan,Absract
+Jennifer Kotter,6th Avenue,BMT Canarsie Line,1993,MTA Jewels,10012,Manhattan,Object
+Olalekan Jeyifous,8th Avenue,BMT Sea Beach Line,2019,Made With Love,10012,Manhattan,Cityscape
+Olalekan Jeyifous,8th Avenue,BMT Sea Beach Line,2019,Made With Love,10012,Manhattan,Object
+Martin/Munoz,Canal Street-Holland Tunnel,IND 8th Avenue Line,2001,A Gathering,10013,Manhattan,Animal
+Susan Leopold,Franklin Street,IRT West Side Line,2005,"Alleyways, Tribeca",10013,Manhattan,Cityscape
+Alexander Brodsky,Canal Street,BMT Broadway Line,1997,Canal Street Canal,10013,Manhattan,Human
+Bing Lee,Canal Street,BMT Broadway Line,1998,Empress Voyage 2/27/1784,10013,Manhattan,Absract
+Leo Villareal,"Broadway/Lafayette, Bleecker Street",IND 6th Avenue Line,2012,Hive,10014,Manhattan,Absract
+Deborah Brown,Houston Street,IRT West Side Line,1994,Platform Diving,10014,Manhattan,Animal
+Mel Chin,"Broadway/Lafayette, Bleecker Street",IND 6th Avenue Line,1998,Signal,10014,Manhattan,Human
+Mel Chin,"Broadway/Lafayette, Bleecker Street",IND 6th Avenue Line,1998,Signal,10014,Manhattan,Absract
+Lee Brozgol,Christopher Street/Sheridan Square,IRT West Side Line,1994,The Greenwich Village Murals,10014,Manhattan,Human
+James Garvey,"33rd Street, Wall Street",IRT East Side Line,1997,Lariat Seat Loops,10016,Manhattan,Absract
+Yayoi Kusama,Grand Central Madison,LIRR Main Line,2022,"A Message of Love, Directly from My Heart unto the Universe",10017,Manhattan,Absract
+Yayoi Kusama,Grand Central Madison,LIRR Main Line,2022,"A Message of Love, Directly from My Heart unto the Universe",10017,Manhattan,Landscape
+Hilma's Ghost,Grand Central,IRT Flushing Line,2025,Abstract Futures,10017,Manhattan,Absract
+Jackie Ferrara,Grand Central,IRT Times Square-Grand Central Shuttle,1997,"Arches, Towers, Pyramids",10017,Manhattan,Absract
+Jackie Ferrara,Grand Central,IRT Times Square-Grand Central Shuttle,1997,"Arches, Towers, Pyramids",10017,Manhattan,Cityscape
+Ellen Driscoll,Grand Central Terminal,Metro-North Grand Central/Park Avenue Tunnel,1998,"As Above, So Below",10017,Manhattan,Human
+Ellen Driscoll,Grand Central Terminal,Metro-North Grand Central/Park Avenue Tunnel,1998,"As Above, So Below",10017,Manhattan,Absract
+Ellen Driscoll,Grand Central Terminal,Metro-North Grand Central/Park Avenue Tunnel,1998,"As Above, So Below",10017,Manhattan,Culture
+Dan Sinclair,Grand Central,IRT Times Square-Grand Central Shuttle,1990,Fast Track & Speed Wheels,10017,Manhattan,Absract
+Jim Hodges,Grand Central,IRT East Side Line,2020,I dreamed a world and called it love,10017,Manhattan,Absract
+Kiki Smith,Grand Central Madison,LIRR Main Line,2022,River Light/The Water's Way/The Presence/The Spring/The Sound,10017,Manhattan,Absract
+Kiki Smith,Grand Central Madison,LIRR Main Line,2022,River Light/The Water's Way/The Presence/The Spring/The Sound,10017,Manhattan,Landscape
+,Grand Central,IRT East Side Line,,Title unknown,10017,Manhattan,Human
+,Grand Central,IRT East Side Line,,Title unknown,10017,Manhattan,Absract
+Christopher Sproat,Grand Central,IRT Flushing Line,2000,V-Beam,10017,Manhattan,Absract
+Xenobia Bailey,34th Street-Hudson Yards,IRT Flushing Line,2015,Funktional Vibrations,10018,Manhattan,Absract
+Lynn Saville,42nd Street/Bryant Park,IND 6th Avenue Line,2006,42nd Street Nocturne,10019,Manhattan,Cityscape
+Liliana Porter,50th Street,IRT West Side Line,1994,Alice: The Way Out,10019,Manhattan,Human
+Josh Scharf,57th Street,BMT Broadway Line,1993,Carnegie Hall Montage,10019,Manhattan,Human
+Josh Scharf,57th Street,BMT Broadway Line,1993,Carnegie Hall Montage,10019,Manhattan,Cityscape
+Saul Leiter,42nd Street/Bryant Park,IND 6th Avenue Line,2007,Early Color,10019,Manhattan,Human
+Saul Leiter,42nd Street/Bryant Park,IND 6th Avenue Line,2007,Early Color,10019,Manhattan,Cityscape
+Nicholas Pearson,34th Street/Herald Square,IND 6th Avenue Line,1991,Halo,10019,Manhattan,Absract
+Alex Katz,57th Street,IND 6th Avenue Line,2018,Metropolitan Faces,10019,Manhattan,Human
+Alex Katz,57th Street,IND 6th Avenue Line,2018,Metropolitan Faces,10019,Manhattan,Floral
+Edith Kramer,Spring Street,IND 8th Avenue Line,1994,New York Subway Station,10019,Manhattan,Cityscape
+Edith Kramer,Spring Street,IND 8th Avenue Line,1994,New York Subway Station,10019,Manhattan,Object
+Christopher Janney,34th Street/Herald Square,BMT Broadway Line,1996,"REACH New York, An Urban Musical Instrument",10019,Manhattan,Absract
+Michele Oka Doner,34th Street/Herald Square,BMT Broadway Line,1991,Radiant Site,10019,Manhattan,Absract
+Ralph Fasanella,5th Avenue/53rd Street,IND Queens Boulevard Line,1950,Subway Riders,10019,Manhattan,Human
+Ralph Fasanella,5th Avenue/53rd Street,IND Queens Boulevard Line,1950,Subway Riders,10019,Manhattan,Culture
+W. P. Snyder,42nd Street/Bryant Park,IND 6th Avenue Line,,"The Sixth Avenue Elevated, 1878",10019,Manhattan,Cityscape
+MTA Arts & Design and The Museum of Modern Art,5th Avenue/53rd Street,IND Queens Boulevard Line,2020,The Subway: Design for a Modern Icon,10019,Manhattan,Cityscape
+Samm Kunce,"42nd Street/Bryant Park, 5th Avenue",IND 6th Avenue Line,2002,Under Bryant Park,10019,Manhattan,Floral
+Travis Ruse,"42nd Street/Bryant Park, Atlantic Avenue",IND 6th Avenue Line,2010,Underground Exposure: Photographs from a Daily Commute,10019,Manhattan,Human
+Matt Mullican,50th Street,IND Queens Boulevard Line,1989,Untitled,10019,Manhattan,Human
+Matt Mullican,50th Street,IND Queens Boulevard Line,1989,Untitled,10019,Manhattan,Animal
+Matt Mullican,50th Street,IND Queens Boulevard Line,1989,Untitled,10019,Manhattan,Absract
+Matt Mullican,50th Street,IND Queens Boulevard Line,1989,Untitled,10019,Manhattan,Cityscape
+Jane Greengold,Grand Army Plaza,IRT Brooklyn Line,1993,"Wings for the IRT, The Irresistable Romance of Travel",10019,Manhattan,Human
+Jane Greengold,Grand Army Plaza,IRT Brooklyn Line,1993,"Wings for the IRT, The Irresistable Romance of Travel",10019,Manhattan,Cityscape
+David Provan,34th Street/Herald Square,IND 6th Avenue Line,1992,Yab-Yum,10019,Manhattan,Absract
+Robert Kushner,77th Street,IRT East Side Line,2004,4 Seasons Seasoned,10021,Manhattan,Floral
+Jean Shin,Lexington Avenue-63rd Street,IND 63rd Street Line,2016,Elevated,10021,Manhattan,Human
+Jean Shin,Lexington Avenue-63rd Street,IND 63rd Street Line,2016,Elevated,10021,Manhattan,Cityscape
+NYC Artists & Public School Students,59th Street/Columbus Circle,IND 8th Avenue Line,1992,Hello Columbus,10023,Manhattan,Human
+NYC Artists & Public School Students,59th Street/Columbus Circle,IND 8th Avenue Line,1992,Hello Columbus,10023,Manhattan,Culture
+Robert Hickman,72nd Street,IRT West Side Line,2005,Laced Canopy (Verdi's Rigoletto),10023,Manhattan,Absract
+Vik Muniz,72nd Street,2nd Avenue Subway,2016,Perfect Strangers,10023,Manhattan,Human
+Sol Lewitt,59th Street/Columbus Circle,IND 8th Avenue Line,2007,Whirls and Twirls,10023,Manhattan,Absract
+Susanna Starr,79th Street,BMT West End Line,2012,A Continuous Thread,10024,Manhattan,Absract
+MTA Arts For Transit Collaborative,81st Street/Museum of Natural History,IND 8th Avenue Line,1999,For Want of a Nail,10024,Manhattan,Animal
+MTA Arts For Transit Collaborative,81st Street/Museum of Natural History,IND 8th Avenue Line,1999,For Want of a Nail,10024,Manhattan,Floral
+Peter Sis,86th Street,IRT East Side Line,2004,Happy City,10024,Manhattan,Animal
+Peter Sis,86th Street,IRT East Side Line,2004,Happy City,10024,Manhattan,Absract
+Amy Bennett,86th Street,BMT 4th Avenue Line,2011,Heydays,10024,Manhattan,Landscape
+Amy Bennett,86th Street,BMT 4th Avenue Line,2011,Heydays,10024,Manhattan,Floral
+Joyce Kozloff,86th Street,IND 8th Avenue Line,2018,Parkside Portals,10024,Manhattan,Absract
+Chuck Close,86th Street,2nd Avenue Subway,2016,Subway Portraits,10024,Manhattan,Human
+Nitza Tufino,86th Street,IRT West Side Line,1989,Westside Views,10024,Manhattan,Human
+Nitza Tufino,86th Street,IRT West Side Line,1989,Westside Views,10024,Manhattan,Animal
+Nitza Tufino,86th Street,IRT West Side Line,1989,Westside Views,10024,Manhattan,Landscape
+Antenna Design New York,96th Street,IRT West Side Line,2010,Bloemendaal,10025,Manhattan,Floral
+Sarah Sze,96th Street,2nd Avenue Subway,2016,Blueprint for a Landscape,10025,Manhattan,Words
+Laura Bradley,96th Street,IRT East Side Line,1994,City Suite,10025,Manhattan,Absract
+Nitza Tufino,103rd Street,IRT East Side Line,1990,Neo-Boriken,10025,Manhattan,Absract
+Nitza Tufino,103rd Street,IRT East Side Line,1990,Neo-Boriken,10025,Manhattan,Floral
+Maren Hassinger,110th Street/Central Park North,IRT Lenox Avenue Line,1998,Message from Malcolm,10026,Manhattan,Words
+Michelle Greene,116th Street/Columbia University,IRT West Side Line,1991,Railrider's Throne,10027,Manhattan,Object
+Manuel Vega,110th Street,IRT East Side Line,1996,Un Sabado en la Ciento Diez (A Saturday on 110th Street),10029,Manhattan,Human
+Manuel Vega,110th Street,IRT East Side Line,1996,Un Sabado en la Ciento Diez (A Saturday on 110th Street),10029,Manhattan,Culture
+Steve Wood,137th Street/City College,IRT West Side Line,1988,Fossils,10031,Manhattan,Object
+Daniel Del Valle,174th Street,IRT White Plains Road Line,2004,A Trip Up The Bronx River,10032,Manhattan,Human
+Daniel Del Valle,174th Street,IRT White Plains Road Line,2004,A Trip Up The Bronx River,10032,Manhattan,Landscape
+Daniel Del Valle,174th Street,IRT White Plains Road Line,2004,A Trip Up The Bronx River,10032,Manhattan,Floral
+Firelei Báez,163rd Street/Amsterdam Avenue,IND 8th Avenue Line,2018,"Ciguapa Antellana, me llamo sueño de la madrugada. (who more sci-fi than us)",10032,Manhattan,Human
+Firelei Báez,163rd Street/Amsterdam Avenue,IND 8th Avenue Line,2018,"Ciguapa Antellana, me llamo sueño de la madrugada. (who more sci-fi than us)",10032,Manhattan,Floral
+Roy Secord,174th/175th Street,IND Concourse Line,2018,Bronx Seasons Everchanging,10033,Manhattan,Absract
+Nancy Spero,66th Street/Lincoln Center,IRT West Side Line,2004,"Artemis, Acrobats, Divas and Dancers",10034,Manhattan,Human
+Sheila Levrant de Bretteville,207th Street,IND 8th Avenue Line,1999,At the Start... At Long Last,10034,Manhattan,Human
+Sheila Levrant de Bretteville,207th Street,IND 8th Avenue Line,1999,At the Start... At Long Last,10034,Manhattan,Words
+Wopo Holup,"207th Street, 215th Street, 225th Street, 231st Street",IRT West Side Line,1991,Elevated Nature I-IV,10034,Manhattan,Absract
+Elizabeth Murray,"59th Street, Lexington Avenue (59th Street)",IRT East Side Line,1996,Blooming,10035,Manhattan,Floral
+Francesco Simeti,4th Avenue,IND Crosstown Line,2016,Indigenous-scapes,10035,Manhattan,Animal
+Francesco Simeti,4th Avenue,IND Crosstown Line,2016,Indigenous-scapes,10035,Manhattan,Floral
+Christo,5th Avenue,BMT Broadway Line,2004,The Gates,10035,Manhattan,Cityscape
+Christo,5th Avenue,BMT Broadway Line,2004,The Gates,10035,Manhattan,Object
+Ann Schaumburger,5th Avenue,BMT Broadway Line,1997,Urban Oasis,10035,Manhattan,Animal
+Nick Cave,Times Square/42nd Street,IRT West Side Line,2021,Every One - Each One - Equal All,10036,Manhattan,Absract
+Lisa Dinhofer,42nd Street/Port Authority Bus Terminal,IND 8th Avenue Line,2003,Losing My Marbles,10036,Manhattan,Object
+Jacob Lawrence,Times Square/42nd Street,IRT West Side Line,2001,New York in Transit,10036,Manhattan,Human
+Jacob Lawrence,Times Square/42nd Street,IRT West Side Line,2001,New York in Transit,10036,Manhattan,Culture
+Norman B. Colp,42nd Street/Port Authority Bus Terminal,IND 8th Avenue Line,1991,The Commuter's Lament/A Close Shave,10036,Manhattan,Words
+Jack Beal,Times Square/42nd Street,IRT West Side Line,1999,The Return of Spring/The Onset of Winter,10036,Manhattan,Human
+Jane Dickson,Times Square/42nd Street,IRT West Side Line,2007,The Revelers,10036,Manhattan,Human
+Roy Lichtenstein,Times Square/42nd Street,IRT West Side Line,1994,Times Square Mural,10036,Manhattan,Absract
+Roy Lichtenstein,Times Square/42nd Street,IRT West Side Line,1994,Times Square Mural,10036,Manhattan,Words
+Toby Buonagurio,Times Square/42nd Street,IRT West Side Line,2005,Times Square Times: 35 Times,10036,Manhattan,Human
+Toby Buonagurio,Times Square/42nd Street,IRT West Side Line,2005,Times Square Times: 35 Times,10036,Manhattan,Animal
+Toby Buonagurio,Times Square/42nd Street,IRT West Side Line,2005,Times Square Times: 35 Times,10036,Manhattan,Absract
+Toby Buonagurio,Times Square/42nd Street,IRT West Side Line,2005,Times Square Times: 35 Times,10036,Manhattan,Object
+Blackford/Fisher,Times Square/42nd Street,IRT West Side Line,2003,Untitled,10036,Manhattan,Human
+Blackford/Fisher,Times Square/42nd Street,IRT West Side Line,2003,Untitled,10036,Manhattan,Animal
+Faith Ringgold,125th Street,IRT Lenox Avenue Line,1996,Flying Home Harlem Heroes and Heroines,10037,Manhattan,Human
+Faith Ringgold,125th Street,IRT Lenox Avenue Line,1996,Flying Home Harlem Heroes and Heroines,10037,Manhattan,Culture
+Faith Ringgold,125th Street,IRT Lenox Avenue Line,1996,Flying Home Harlem Heroes and Heroines,10037,Manhattan,Cityscape
+Houston Conwill,125th Street,IRT East Side Line,1986,Open Secret,10037,Manhattan,Absract
+Houston Conwill,125th Street,IRT East Side Line,1986,Open Secret,10037,Manhattan,Object
+Valerie Maynard,125th Street,IRT East Side Line,2002,Polyrhythmics of Consciousness and Light,10037,Manhattan,Human
+Valerie Maynard,125th Street,IRT East Side Line,2002,Polyrhythmics of Consciousness and Light,10037,Manhattan,Absract
+Wopo Holup,125th Street,IRT West Side Line,1991,River to River,10037,Manhattan,Absract
+"James Carpenter Design Associates, Grimshaw Archit",Fulton Street Transit Center,IRT East Side Line,2014,Sky Reflector-Net,10038,Manhattan,Absract
+Robert Blackburn,116th Street,IRT East Side Line,2005,In Everything There is a Season,10039,Manhattan,Absract
+Vincent Smith,116th Street,IRT Lenox Avenue Line,1999,Minton's Playhouse/Movers and Shakers,10039,Manhattan,Human
+Vincent Smith,116th Street,IRT Lenox Avenue Line,1999,Minton's Playhouse/Movers and Shakers,10039,Manhattan,Culture
+Carmen Lizardo,181st Street,IND 8th Avenue Line,2023,Great Waves of Immigration,10040,Manhattan,Human
+Carmen Lizardo,181st Street,IND 8th Avenue Line,2023,Great Waves of Immigration,10040,Manhattan,Culture
+Willie Birch,135th Street,IRT Lenox Avenue Line,1995,Harlem Timeline,10040,Manhattan,Human
+Willie Birch,135th Street,IRT Lenox Avenue Line,1995,Harlem Timeline,10040,Manhattan,Culture
+Raúl Colón,191st Street,IRT West Side Line,2003,Primavera,10040,Manhattan,Human
+Raúl Colón,191st Street,IRT West Side Line,2003,Primavera,10040,Manhattan,Animal
+Raúl Colón,191st Street,IRT West Side Line,2003,Primavera,10040,Manhattan,Landscape
+,191st Street,IRT West Side Line,2008,Title unknown,10040,Manhattan,Absract
+,191st Street,IRT West Side Line,2008,Title unknown,10040,Manhattan,Culture
+Robert Hickman,Roosevelt Island,IND 63rd Street Line,1996,Convex Disk at Roosevelt Island,10044,Manhattan,Absract
+Robert Hickman,Roosevelt Island,IND 63rd Street Line,1996,Convex Disk at Roosevelt Island,10044,Manhattan,Object
+Al Held,"Lexington Avenue-53rd Street, 51st Street",IND Queens Boulevard Line,2004,Passing Through,10152,Manhattan,Absract
+Nina Yankowitz,51st Street,IRT East Side Line,1989,Tunnel Vision,10154,Manhattan,Absract
+Katherine Bradford,1st Avenue,BMT Canarsie Line,2021,Queens of the Night,10155,Manhattan,Human
+Katherine Bradford,1st Avenue,BMT Canarsie Line,2021,Queens of the Night,10155,Manhattan,Absract
+Christopher Wynter,110th Street/Cathedral Parkway,IND 8th Avenue Line,1999,Migrations,10205,Manhattan,Human
+Christopher Wynter,110th Street/Cathedral Parkway,IND 8th Avenue Line,1999,Migrations,10205,Manhattan,Absract
+Christopher Wynter,110th Street/Cathedral Parkway,IND 8th Avenue Line,1999,Migrations,10205,Manhattan,Culture
+Zach DeSart,Bowling Green,IRT East Side Line,2009,A Way To Go,10275,Manhattan,Human
+Zach DeSart,Bowling Green,IRT East Side Line,2009,A Way To Go,10275,Manhattan,Landscape
+Zach DeSart,Bowling Green,IRT East Side Line,2009,A Way To Go,10275,Manhattan,Cityscape
+"	Jane Ingram Allen",Bowling Green,IRT East Side Line,1994,Historic New York Photographs,10275,Manhattan,Landscape
+"	Jane Ingram Allen",Bowling Green,IRT East Side Line,1994,Historic New York Photographs,10275,Manhattan,Cityscape
+Doug & Mike Starn,South Ferry (New Station),IRT West Side Line,2007,"See It Split, See It Change",10275,Manhattan,Floral
+Sandra Bloodworth,South Ferry (Outer Loop Station),IRT West Side Line,1990,South Sails,10275,Manhattan,Absract
+Sandra Bloodworth,South Ferry (Outer Loop Station),IRT West Side Line,1990,South Sails,10275,Manhattan,Landscape
+Nicole Bengiveno,Bowling Green,IRT East Side Line,2007,The Essence of Time,10275,Manhattan,Landscape
+Alena Ort,Bowling Green,IRT East Side Line,,Underground Sky,10275,Manhattan,Human
+Alena Ort,Bowling Green,IRT East Side Line,,Underground Sky,10275,Manhattan,Absract
+Tim Snell,8th Street,BMT Broadway Line,2002,Broadway Diary,10306,Staten Island,Landscape
+Tim Snell,8th Street,BMT Broadway Line,2002,Broadway Diary,10306,Staten Island,Cityscape
+Keri Sheheen,New Dorp,SIRT,2023,Creeping On Where Time Has Been,10306,Staten Island,Absract
+Jenna Lucente,Arthur Kill,SIRT,2016,"Tottenville Sun, Tottenville Sky",10307,Staten Island,Animal
+Jenna Lucente,Arthur Kill,SIRT,2016,"Tottenville Sun, Tottenville Sky",10307,Staten Island,Landscape
+José Ortega,3rd Avenue/149th Street,IRT White Plains Road Line,1996,"Una Raza, Un Mundo, Universo (One Race, One World, One Universe)",10451,Bronx,Human
+José Ortega,3rd Avenue/149th Street,IRT White Plains Road Line,1996,"Una Raza, Un Mundo, Universo (One Race, One World, One Universe)",10451,Bronx,Absract
+José Ortega,3rd Avenue/149th Street,IRT White Plains Road Line,1996,"Una Raza, Un Mundo, Universo (One Race, One World, One Universe)",10451,Bronx,Culture
+Acconci/Brandt,"161st Street-River Avenue (Yankee Stadium), 161st Street-River Avenue (Yankee Stadium)",IND Concourse Line,2002,Wall-Slide/Room of Tranquility,10452,Bronx,Absract
+Amir Bey,Mt. Eden Avenue,IRT Woodlawn Line,2006,"The Procession of Folk, No. 3",10453,Bronx,Human
+Amir Bey,Mt. Eden Avenue,IRT Woodlawn Line,2006,"The Procession of Folk, No. 3",10453,Bronx,Absract
+Amir Bey,Mt. Eden Avenue,IRT Woodlawn Line,2006,"The Procession of Folk, No. 3",10453,Bronx,Culture
+Frank Leslie Hampton,Tremont Avenue,IND Concourse Line,2000,Uptown New York,10453,Bronx,Cityscape
+Carol Sun,167th Street,IRT Woodlawn Line,2006,A Bronx Reflection,10456,Bronx,Animal
+Carol Sun,167th Street,IRT Woodlawn Line,2006,A Bronx Reflection,10456,Bronx,Floral
+Rico Gatson,167th Street,IND Concourse Line,2019,Beacons,10456,Bronx,Human
+Rico Gatson,167th Street,IND Concourse Line,2019,Beacons,10456,Bronx,Culture
+Andrea Deszö,Bedford Park Boulevard,IRT Woodlawn Line,2006,Community Garden,10458,Bronx,Animal
+Andrea Deszö,Bedford Park Boulevard,IRT Woodlawn Line,2006,Community Garden,10458,Bronx,Floral
+Barbara Grygutis,Whitlock Avenue,IRT Pelham Line,2010,Bronx River View,10459,Bronx,Absract
+Michael Kelly Williams,Intervale Avenue,IRT White Plains Road Line,1992,El 2/El 5,10459,Bronx,Absract
+George Crespo,Jackson Avenue,IRT White Plains Road Line,2006,Latin American Stories,10459,Bronx,Human
+George Crespo,Jackson Avenue,IRT White Plains Road Line,2006,Latin American Stories,10459,Bronx,Culture
+Daniel Hauben,Freeman Street,IRT White Plains Road Line,2005,The El,10459,Bronx,Human
+Daniel Hauben,Freeman Street,IRT White Plains Road Line,2005,The El,10459,Bronx,Culture
+Lisa Amowitz,Simpson Street,IRT White Plains Road Line,2006,"What We Build is Not Permanent, We Are Not What We Build",10459,Bronx,Floral
+Naomi Campbell,West Farms Sq./East Tremont Ave./177th St.,IRT White Plains Road Line,2005,Animal Tracks,10460,Bronx,Animal
+Luisa Caldwell,East 180th Street,IRT White Plains Road Line,2011,Station Villa,10460,Bronx,Floral
+Priscila De Carvalho,Castle Hill Avenue,IRT Pelham Line,2015,"Bronx: Heart, Homeland",10461,Bronx,Human
+Priscila De Carvalho,Castle Hill Avenue,IRT Pelham Line,2015,"Bronx: Heart, Homeland",10461,Bronx,Absract
+Romare Bearden,Westchester Square,IRT Pelham Line,1993,City of Light,10461,Bronx,Absract
+Romare Bearden,Westchester Square,IRT Pelham Line,1993,City of Light,10461,Bronx,Cityscape
+Schachter/Levi,Middletown Road,IRT Pelham Line,2015,Cross-Bronx Waterway,10461,Bronx,Animal
+Schachter/Levi,Middletown Road,IRT Pelham Line,2015,Cross-Bronx Waterway,10461,Bronx,Floral
+Soonae Tark,Buhre Avenue,IRT Pelham Line,2015,Have a Happy Day,10461,Bronx,Absract
+,Westchester Square,IRT Pelham Line,,Title unknown,10461,Bronx,Absract
+Candida Alvarez,Bronx Park East,IRT White Plains Road Line,2006,B is for Birds in the Bronx,10462,Bronx,Animal
+Candida Alvarez,Bronx Park East,IRT White Plains Road Line,2006,B is for Birds in the Bronx,10462,Bronx,Absract
+Candida Alvarez,Bronx Park East,IRT White Plains Road Line,2006,B is for Birds in the Bronx,10462,Bronx,Object
+Wopo Holup,Dyckman Street,IRT West Side Line,1991,Birds in Flight-Moon View,10463,Bronx,Animal
+Wopo Holup,Dyckman Street,IRT West Side Line,1991,Birds in Flight-Moon View,10463,Bronx,Object
+Noel Copeland,238th Street (Nereid Avenue),IRT White Plains Road Line,2006,Leaf of Life,10463,Bronx,Absract
+Noel Copeland,238th Street (Nereid Avenue),IRT White Plains Road Line,2006,Leaf of Life,10463,Bronx,Floral
+Felipe Galindo,231st Street,IRT West Side Line,2007,Magic Realism in Kingsbridge,10463,Bronx,Animal
+Felipe Galindo,231st Street,IRT West Side Line,2007,Magic Realism in Kingsbridge,10463,Bronx,Cityscape
+Skowmon Hastanan,233rd Street,IRT White Plains Road Line,2006,Secret Garden: There's No Place Like Home,10466,Bronx,Floral
+Nicky Enright,225th Street,IRT White Plains Road Line,2006,Universal City,10466,Bronx,Absract
+Nicky Enright,225th Street,IRT White Plains Road Line,2006,Universal City,10466,Bronx,Landscape
+Michele Brody,Allerton Avenue,IRT White Plains Road Line,2006,Allerton Mandalas,10467,Bronx,Absract
+Béatrice Coron,Burke Avenue,IRT White Plains Road Line,2006,Bronx Literature,10467,Bronx,Human
+Béatrice Coron,Burke Avenue,IRT White Plains Road Line,2006,Bronx Literature,10467,Bronx,Absract
+Béatrice Coron,Burke Avenue,IRT White Plains Road Line,2006,Bronx Literature,10467,Bronx,Cityscape
+Joseph D'Alesandro,219th Street,IRT White Plains Road Line,2006,Homage,10467,Bronx,Human
+Joseph D'Alesandro,219th Street,IRT White Plains Road Line,2006,Homage,10467,Bronx,Absract
+Andrea Arroyo,Gun Hill Road,IRT White Plains Road Line,2006,"Mi Sol, Mi Planeta, Mi Ciudad (My Sun, My Planet, My City)",10467,Bronx,Human
+Andrea Arroyo,Gun Hill Road,IRT White Plains Road Line,2006,"Mi Sol, Mi Planeta, Mi Ciudad (My Sun, My Planet, My City)",10467,Bronx,Absract
+Josie Gonzalez Albright,Woodlawn,IRT Woodlawn Line,2005,Children at Play,10468,Bronx,Human
+Josie Gonzalez Albright,Woodlawn,IRT Woodlawn Line,2005,Children at Play,10468,Bronx,Cityscape
+Laura Battle,Burnside Avenue,IRT Woodlawn Line,2006,How to Get to the Moon,10468,Bronx,Absract
+José Ortiz,183rd Street,IRT Woodlawn Line,2006,Many Trails,10468,Bronx,Landscape
+José Ortiz,183rd Street,IRT Woodlawn Line,2006,Many Trails,10468,Bronx,Cityscape
+Corinne Grondahl,Mosholu Parkway,IRT Woodlawn Line,2006,Metromorphosis/Birth of a Station,10468,Bronx,Absract
+Moses Ros,Fordham Road,IRT Woodlawn Line,2005,"Patriasana, Wholesomeland",10468,Bronx,Human
+Moses Ros,Fordham Road,IRT Woodlawn Line,2005,"Patriasana, Wholesomeland",10468,Bronx,Absract
+Juan Sanchez,176th Street,IRT Woodlawn Line,2006,Reaching Out For Each Other,10468,Bronx,Human
+Juan Sanchez,176th Street,IRT Woodlawn Line,2006,Reaching Out For Each Other,10468,Bronx,Absract
+Mario M. Muller,Kingsbridge Road,IRT Woodlawn Line,2006,Urban Motif,10468,Bronx,Human
+Dina Bursztyn,170th Street,IRT Woodlawn Line,2005,Views from Above,10468,Bronx,Absract
+Dina Bursztyn,170th Street,IRT Woodlawn Line,2005,Views from Above,10468,Bronx,Floral
+Tomie Arai,Pelham Parkway,IRT White Plains Road Line,2006,Back to the Garden,10470,Bronx,Floral
+,242nd Street/Van Cortlandt Park,IRT West Side Line,2007,Title unknown,10471,Bronx,Human
+William Low,East 177th Street/Parkchester,IRT Pelham Line,2010,A Day in Parkchester,10472,Bronx,Cityscape
+Whitesavage/Lyle,Elder Avenue,IRT Pelham Line,2011,Bronx Trees,10472,Bronx,Floral
+Alison Moritsugu,St. Lawrence Avenue,IRT Pelham Line,2011,"Community (Acer rubrum, Rosa palustris, Smilax rotundifolia, Carya cordiformis)",10472,Bronx,Floral
+,East 177th Street/Parkchester,IRT Pelham Line,,Live the Dream,10472,Bronx,Human
+,East 177th Street/Parkchester,IRT Pelham Line,,Live the Dream,10472,Bronx,Culture
+Cristalli/Brown,Morrison/Soundview Aves.,IRT Pelham Line,2010,The Land Between Two Waters,10472,Bronx,Floral
+Sydney Cash,Queensborough Plaza,IRT Flushing Line,2000,Columns,11101,Queens,Absract
+Sarah Morris,39th/Beebe Aves.,BMT Astoria Line,2018,Hellion Equilibrium,11101,Queens,Absract
+Tricia Keightley,Hunters Point Avenue,IRT Flushing Line,2012,Hunters Point Avenue Project,11101,Queens,Absract
+Ellen Harvey,Queens Plaza,IND Queens Boulevard Line,2005,Look Up Not Down,11101,Queens,Absract
+Ellen Harvey,Queens Plaza,IND Queens Boulevard Line,2005,Look Up Not Down,11101,Queens,Cityscape
+Elizabeth Murray,Court Square/23rd St (Ely Avenue),IND Queens Boulevard Line,2001,Stream,11101,Queens,Animal
+Elizabeth Murray,Court Square/23rd St (Ely Avenue),IND Queens Boulevard Line,2001,Stream,11101,Queens,Absract
+Frank Olt,Court Square/23rd St (Ely Avenue),IND Queens Boulevard Line,1992,Temple Quad Reliefs,11101,Queens,Absract
+Jeffrey Gibson,Astoria Boulevard/Hoyt Avenue,BMT Astoria Line,2019,I Am A Rainbow Too,11102,Queens,Absract
+Stephen Westfall,30th/Grand Aves.,BMT Astoria Line,2018,Perasma I and II,11103,Queens,Absract
+Yumi Heo,"33rd Street/Rawson Street, 40th Street/Lowery Street, 46th Street/Bliss Street",IRT Flushing Line,1999,Q is For Queens,11104,Queens,Human
+Yumi Heo,"33rd Street/Rawson Street, 40th Street/Lowery Street, 46th Street/Bliss Street",IRT Flushing Line,1999,Q is For Queens,11104,Queens,Animal
+Maureen McQuillan,36th/Washington Aves.,BMT Astoria Line,2018,Crystal Blue Persuasion,11106,Queens,Absract
+Susan Morrison,Borough Hall (East Side Branch),IRT Brooklyn Line,2007,"Borough Hall Station, First Subway In Brooklyn",11201,Brooklyn,Landscape
+Stephen T. Johnson,DeKalb Avenue,BMT 4th Avenue Line,2004,DeKalb Improvisation,11201,Brooklyn,Absract
+Ben Snead,Jay St./Metrotech (Borough Hall),IND 8th Avenue Line,2009,Departures and Arrivals,11201,Brooklyn,Animal
+Diane Carr,Broadway,BMT Astoria Line,2018,Outlook,11201,Brooklyn,Absract
+Diane Carr,Broadway,BMT Astoria Line,2018,Outlook,11201,Brooklyn,Landscape
+Louis Delsarte,Church Avenue,IRT Brooklyn Line,2001,Transitions,11203,Brooklyn,Human
+Louis Delsarte,Church Avenue,IRT Brooklyn Line,2001,Transitions,11203,Brooklyn,Landscape
+Louis Delsarte,Church Avenue,IRT Brooklyn Line,2001,Transitions,11203,Brooklyn,Cityscape
+Francesco Simeti,18th Avenue,BMT West End Line,2012,Bensonhurst Gardens,11204,Brooklyn,Landscape
+Francesco Simeti,18th Avenue,BMT West End Line,2012,Bensonhurst Gardens,11204,Brooklyn,Floral
+Francesco Simeti,18th Avenue,BMT West End Line,2012,Bensonhurst Gardens,11204,Brooklyn,Culture
+Odili Donald Odita,20th Avenue,BMT West End Line,2012,Kaleidoscope,11204,Brooklyn,Absract
+Andrea Deszö,New Utrecht Avenue,BMT Sea Beach Line,2018,Nature Wall,11204,Brooklyn,Animal
+Andrea Deszö,New Utrecht Avenue,BMT Sea Beach Line,2018,Nature Wall,11204,Brooklyn,Floral
+Andrea Deszö,New Utrecht Avenue,BMT Sea Beach Line,2018,Nature Wall,11204,Brooklyn,Object
+Eugenie Tung,New Lots Avenue,BMT Canarsie Line,2007,16 Windows,11207,Brooklyn,Human
+Eugenie Tung,New Lots Avenue,BMT Canarsie Line,2007,16 Windows,11207,Brooklyn,Culture
+SOL'SAX,Halsey Street,BMT Nassau Street-Jamaica Line,2007,Ancestral Letters in SOL'SCRYPT,11207,Brooklyn,Absract
+Jimmy James Green,Utica Avenue,IND Fulton Street Line,1996,Children's Cathedral,11207,Brooklyn,Human
+Jimmy James Green,Utica Avenue,IND Fulton Street Line,1996,Children's Cathedral,11207,Brooklyn,Cityscape
+Chris Robinson,Gates Avenue,BMT Nassau Street-Jamaica Line,2002,Dream Train,11207,Brooklyn,Human
+Chris Robinson,Gates Avenue,BMT Nassau Street-Jamaica Line,2002,Dream Train,11207,Brooklyn,Cityscape
+Mara Held,Hewes Street,BMT Nassau Street-Jamaica Line,2002,El in 16 Notes,11207,Brooklyn,Absract
+Ronald Calloway,Kosciuszko Street,BMT Nassau Street-Jamaica Line,2002,Euphorbias,11207,Brooklyn,Absract
+Hugo Consuegra,Utica Avenue,IRT Brooklyn Line,2004,"Good Morning, Good Night",11207,Brooklyn,Animal
+Hugo Consuegra,Utica Avenue,IRT Brooklyn Line,2004,"Good Morning, Good Night",11207,Brooklyn,Cityscape
+Hugo Consuegra,Utica Avenue,IRT Brooklyn Line,2004,"Good Morning, Good Night",11207,Brooklyn,Object
+George Trakas,Atlantic Avenue,IRT Brooklyn Line,2004,"Hook, Line, and Sinker",11207,Brooklyn,Absract
+George Trakas,Atlantic Avenue,IRT Brooklyn Line,2004,"Hook, Line, and Sinker",11207,Brooklyn,Object
+Robin Holder,Flushing Avenue,BMT Nassau Street-Jamaica Line,2006,Migrations,11207,Brooklyn,Absract
+Annette Davidek,Lorimer Street,BMT Nassau Street-Jamaica Line,2002,Roundlet Series,11207,Brooklyn,Absract
+Philemona Williamson,Livonia Avenue,BMT Canarsie Line,2007,Seasons,11207,Brooklyn,Human
+Tim Connor,Atlantic Avenue,IRT Brooklyn Line,,Steps to the Subway,11207,Brooklyn,Human
+Tim Connor,Atlantic Avenue,IRT Brooklyn Line,,Steps to the Subway,11207,Brooklyn,Landscape
+Tim Connor,Atlantic Avenue,IRT Brooklyn Line,,Steps to the Subway,11207,Brooklyn,Cityscape
+Takayo Noda,Sutter Avenue,BMT Canarsie Line,2007,The Habitat for the Yellow Bird,11207,Brooklyn,Animal
+Takayo Noda,Sutter Avenue,BMT Canarsie Line,2007,The Habitat for the Yellow Bird,11207,Brooklyn,Floral
+Barbara Ellmann,Van Siclen Avenue,BMT Nassau Street-Jamaica Line,2007,The View From Here,11207,Brooklyn,Absract
+Scott Redden,Alabama Avenue,BMT Nassau Street-Jamaica Line,2007,Untitled,11207,Brooklyn,Landscape
+Saya Woolfalk,"Pennsylvania Avenue, Van Siclen Avenue",IRT Brooklyn Line,2017,Urban Garden Rail,11207,Brooklyn,Human
+Saya Woolfalk,"Pennsylvania Avenue, Van Siclen Avenue",IRT Brooklyn Line,2017,Urban Garden Rail,11207,Brooklyn,Cityscape
+Beatrice Lebreton,"Junius Street, Rockaway Avenue",IRT Brooklyn Line,2017,Wisdom Along the Way,11207,Brooklyn,Absract
+Beatrice Lebreton,"Junius Street, Rockaway Avenue",IRT Brooklyn Line,2017,Wisdom Along the Way,11207,Brooklyn,Words
+Nancy Holt,"Fulton Street (Broadway/Nassau), Fulton Street",IND 8th Avenue Line,1987,Astral Grating,11208,Brooklyn,Object
+Margaret Lanzetta,Norwood Avenue,BMT Nassau Street-Jamaica Line,2007,Culture Swirl,11208,Brooklyn,Absract
+Amy Cheng,Cleveland Street,BMT Nassau Street-Jamaica Line,2007,Las Flores,11208,Brooklyn,Absract
+Amy Cheng,Cleveland Street,BMT Nassau Street-Jamaica Line,2007,Las Flores,11208,Brooklyn,Floral
+Frederick Dana Marsh,"Fulton Street (Broadway/Nassau), Fulton Street",IND 8th Avenue Line,2000,"Marine Grill Murals, 1913",11208,Brooklyn,Cityscape
+Jung Hyang Kim,Crescent Street,BMT Nassau Street-Jamaica Line,2007,Wheel of Bloom; Soak up the Sun,11208,Brooklyn,Absract
+Owen Smith,36th Street,BMT 4th Avenue Line,1998,"An Underground Movement: Designers, Builders, Riders",11209,Brooklyn,Human
+Owen Smith,36th Street,BMT 4th Avenue Line,1998,"An Underground Movement: Designers, Builders, Riders",11209,Brooklyn,Culture
+Owen Smith,36th Street,BMT 4th Avenue Line,1998,"An Underground Movement: Designers, Builders, Riders",11209,Brooklyn,Cityscape
+Katy Fischer,Bay Ridge Avenue,BMT 4th Avenue Line,2017,Strata,11209,Brooklyn,Absract
+Ellsworth Ausby,Marcy Avenue,BMT Nassau Street-Jamaica Line,2005,A Space Odyssey,11211,Brooklyn,Absract
+Marcel Dzama,Bedford Avenue,BMT Canarsie Line,2021,No Less Than Everything Comes Together,11211,Brooklyn,Human
+Marcel Dzama,Bedford Avenue,BMT Canarsie Line,2021,No Less Than Everything Comes Together,11211,Brooklyn,Culture
+Jackie Chang,Metropolitan Avenue/Grand Street,IND Crosstown Line,2000,Signs of Life,11211,Brooklyn,Words
+Nancy Baker,"Sutter Avenue/Rutland Road, Saratoga Avenue",IRT Brooklyn Line,2017,Ailanthus and Chandelier,11212,Brooklyn,Animal
+Nancy Baker,"Sutter Avenue/Rutland Road, Saratoga Avenue",IRT Brooklyn Line,2017,Ailanthus and Chandelier,11212,Brooklyn,Absract
+Eric Pryor,Franklin Avenue,BMT Franklin Shuttle,1999,Life and Continued Growth,11213,Brooklyn,Absract
+Amy Cheng,25th Avenue,BMT West End Line,2012,Rediscovery,11214,Brooklyn,Absract
+Amy Cheng,25th Avenue,BMT West End Line,2012,Rediscovery,11214,Brooklyn,Floral
+Marina Tsesarskaya,Prospect Avenue,IRT White Plains Road Line,2006,"Bronx, Four Seasons",11215,Brooklyn,Absract
+Marina Tsesarskaya,Prospect Avenue,IRT White Plains Road Line,2006,"Bronx, Four Seasons",11215,Brooklyn,Floral
+Monika Bravo,Prospect Avenue,BMT 4th Avenue Line,2017,Duration,11215,Brooklyn,Absract
+Alyson Shotz,Smith/9th Street,IND Crosstown Line,2013,Fathom Points + Compass Bearings,11215,Brooklyn,Absract
+Alyson Shotz,Smith/9th Street,IND Crosstown Line,2013,Fathom Points + Compass Bearings,11215,Brooklyn,Words
+Emmett Wigglesworth,Union Street,BMT 4th Avenue Line,1994,CommUnion,11217,Brooklyn,Human
+Emmett Wigglesworth,Union Street,BMT 4th Avenue Line,1994,CommUnion,11217,Brooklyn,Absract
+Allen & Ellen Wexler,Atlantic Terminal (Flatbush Avenue),LIRR Flatbush Avenue Line,2009,Overlook,11217,Brooklyn,Cityscape
+Portia Munson,Fort Hamilton Parkway,BMT West End Line,2012,Gardens of Fort Hamilton Parkway Station,11218,Brooklyn,Floral
+Andrea Deszö,62nd Street,BMT West End Line,2012,Nature Rail,11219,Brooklyn,Floral
+Mickalene Thomas,53rd Street,BMT 4th Avenue Line,2017,Untitled,11220,Brooklyn,Absract
+Mickalene Thomas,53rd Street,BMT 4th Avenue Line,2017,Untitled,11220,Brooklyn,Floral
+Jason Middlebrook,Avenue U,BMT Brighton Line,2011,Brooklyn Seeds,11223,Brooklyn,Floral
+Cara Lynch,Ditmas Avenue,BMT Culver Line,2017,Inheritance: In Memory of American Glass,11223,Brooklyn,Absract
+Michael Krondl,Neptune Avenue,BMT Culver Line,2004,Looking Up,11223,Brooklyn,Cityscape
+Michael Krondl,Neptune Avenue,BMT Culver Line,2004,Looking Up,11223,Brooklyn,Words
+Lisa Sigal,Avenue N,BMT Culver Line,2018,Push Pull,11223,Brooklyn,Cityscape
+Jackie Battenfield,Avenue P,BMT Culver Line,2018,Tree Canopy,11223,Brooklyn,Landscape
+Xin Song,Bay Parkway,BMT West End Line,2012,Tree of Life,11223,Brooklyn,Floral
+Deborah Masters,Ocean Parkway,BMT Brighton Line,1996,Coney Island Reliefs,11224,Brooklyn,Human
+Dan Zeller,Bay 50th Street,BMT West End Line,2012,Internal Connectivity,11224,Brooklyn,Absract
+Robert Wilson,Coney Island/Stillwell Avenue,BMT West End Line,2004,My Coney Island Baby,11224,Brooklyn,Human
+Robert Wilson,Coney Island/Stillwell Avenue,BMT West End Line,2004,My Coney Island Baby,11224,Brooklyn,Animal
+Robert Wilson,Coney Island/Stillwell Avenue,BMT West End Line,2004,My Coney Island Baby,11224,Brooklyn,Cityscape
+Susan Tunick,"Prospect Park, Parkside Avenue",BMT Brighton Line,1994,Brighton Clay Re-Leaf,11225,Brooklyn,Floral
+Muriel Castanis,Flatbush Avenue,IRT Brooklyn Line,1996,Flatbush Floogies,11225,Brooklyn,Human
+Millie Burns,Botanic Garden,BMT Franklin Shuttle,1999,IL7/Square,11225,Brooklyn,Floral
+Patsy Norvell,"Beverley Road, Cortelyou Road",BMT Brighton Line,1994,Garden Stops,11226,Brooklyn,Floral
+David Wilson,Newkirk Plaza,BMT Brighton Line,1998,Transit Skylight,11226,Brooklyn,Absract
+Joan Linder,71st Street,BMT West End Line,2012,The Flora of Bensonhurst,11228,Brooklyn,Floral
+Ed Kopel,Avenue H,BMT Brighton Line,2012,Brooklyn Bucolic,11230,Brooklyn,Cityscape
+Rita MacDonald,Avenue M,BMT Brighton Line,2011,Hare Apparent,11230,Brooklyn,Animal
+Rita MacDonald,Avenue M,BMT Brighton Line,2011,Hare Apparent,11230,Brooklyn,Landscape
+Christopher Russell,9th Avenue,BMT West End Line,2012,Bees for Sunset Park,11232,Brooklyn,Animal
+Al Loving,"Broadway Junction, Broadway-East New York (Broadway Junction), Broadway/East New York (Broadway Junction)",BMT Canarsie Line,2001,"Brooklyn, New Morning",11233,Brooklyn,Absract
+Maria Dominguez,Chauncey Street,BMT Nassau Street-Jamaica Line,2002,El-Views,11233,Brooklyn,Human
+Maria Dominguez,Chauncey Street,BMT Nassau Street-Jamaica Line,2002,El-Views,11233,Brooklyn,Absract
+,"Pacific Street (Atlantic Avenue–Barclays Center), Atlantic Avenue, Atlantic Avenue",BMT 4th Avenue Line,2009,MoMA Atlantic/Pacific,11233,Brooklyn,Absract
+Isha Shabaka,Park Place,BMT Franklin Shuttle,1999,Units of the Free,11233,Brooklyn,Human
+Isha Shabaka,Park Place,BMT Franklin Shuttle,1999,Units of the Free,11233,Brooklyn,Absract
+Rita MacDonald,Avenue J,BMT Brighton Line,2011,Bird Laid Bare,11234,Brooklyn,Animal
+Rita MacDonald,Avenue J,BMT Brighton Line,2011,Bird Laid Bare,11234,Brooklyn,Absract
+Rita MacDonald,Avenue J,BMT Brighton Line,2011,Bird Laid Bare,11234,Brooklyn,Floral
+Rhoda Yohai Andors,Kings Highway,BMT Brighton Line,1987,Kings Highway Hieroglyphics,11234,Brooklyn,Human
+Rhoda Yohai Andors,Kings Highway,BMT Brighton Line,1987,Kings Highway Hieroglyphics,11234,Brooklyn,Culture
+Julien Gardair,"Kings Highway, 18th Avenue",BMT Culver Line,2018,We are each others,11234,Brooklyn,Absract
+Derrick Adams,Nostrand Avenue,LIRR Flatbush Avenue Line,2019,Around the Way,11235,Brooklyn,Absract
+Derrick Adams,Nostrand Avenue,LIRR Flatbush Avenue Line,2019,Around the Way,11235,Brooklyn,Cityscape
+Dan George,Brighton Beach,BMT Brighton Line,1999,Mermade/Dionysus and the Pirates,11235,Brooklyn,Human
+Dan George,Brighton Beach,BMT Brighton Line,1999,Mermade/Dionysus and the Pirates,11235,Brooklyn,Absract
+DeBorah Goletz,Sheepshead Bay,BMT Brighton Line,1997,Postcards From Sheepshead Bay,11235,Brooklyn,Human
+DeBorah Goletz,Sheepshead Bay,BMT Brighton Line,1997,Postcards From Sheepshead Bay,11235,Brooklyn,Landscape
+DeBorah Goletz,Sheepshead Bay,BMT Brighton Line,1997,Postcards From Sheepshead Bay,11235,Brooklyn,Cityscape
+,Sterling Street,IRT Brooklyn Line,,Title unknown,11235,Brooklyn,Human
+,Sterling Street,IRT Brooklyn Line,,Title unknown,11235,Brooklyn,Animal
+,Sterling Street,IRT Brooklyn Line,,Title unknown,11235,Brooklyn,Absract
+,Sterling Street,IRT Brooklyn Line,,Title unknown,11235,Brooklyn,Landscape
+,Sterling Street,IRT Brooklyn Line,,Title unknown,11235,Brooklyn,Culture
+Mary Temple,Neck Road,BMT Brighton Line,2011,"West Wall, East Light, Morning",11235,Brooklyn,Absract
+Mary Temple,Neck Road,BMT Brighton Line,2011,"West Wall, East Light, Morning",11235,Brooklyn,Landscape
+Michael Ingui,East 105th Street,BMT Canarsie Line,2007,Crescendo,11236,Brooklyn,Absract
+Cadence Giersbach,"Myrtle/Wyckoff Headhouse/Transfer, Myrtle Avenue",BMT Myrtle Avenue Line,2007,From Earth To Sky,11237,Brooklyn,Animal
+Cadence Giersbach,"Myrtle/Wyckoff Headhouse/Transfer, Myrtle Avenue",BMT Myrtle Avenue Line,2007,From Earth To Sky,11237,Brooklyn,Landscape
+Cadence Giersbach,"Myrtle/Wyckoff Headhouse/Transfer, Myrtle Avenue",BMT Myrtle Avenue Line,2007,From Earth To Sky,11237,Brooklyn,Floral
+George Bates,Central Avenue,BMT Myrtle Avenue Line,2013,Generation Dynamica,11237,Brooklyn,Absract
+Cal Lane,Knickerbocker Avenue,BMT Myrtle Avenue Line,2014,The Digs,11237,Brooklyn,Absract
+Pat Steir,Eastern Parkway/Brooklyn Museum,IRT Brooklyn Line,1994,Brueghel Series,11238,Brooklyn,Absract
+Jamal Ince,Clinton/Washington Aves.,IND Crosstown Line,2000,Fusion,11238,Brooklyn,Human
+Jamal Ince,Clinton/Washington Aves.,IND Crosstown Line,2000,Fusion,11238,Brooklyn,Absract
+John Woodrow Kelley,Clinton/Washington Aves.,IND Crosstown Line,2000,Mercury,11238,Brooklyn,Human
+John Woodrow Kelley,Clinton/Washington Aves.,IND Crosstown Line,2000,Mercury,11238,Brooklyn,Landscape
+John Woodrow Kelley,Clinton/Washington Aves.,IND Crosstown Line,2000,Mercury,11238,Brooklyn,Culture
+Josh Dorman,Clinton/Washington Aves.,IND Crosstown Line,,Minor Landscape,11238,Brooklyn,Absract
+Josh Dorman,Clinton/Washington Aves.,IND Crosstown Line,,Minor Landscape,11238,Brooklyn,Landscape
+MTA Arts For Transit Collaborative,Eastern Parkway/Brooklyn Museum,IRT Brooklyn Line,2004,New York City Architectural Artifacts from the Collection of the Brooklyn Museum,11238,Brooklyn,Culture
+MTA Arts For Transit Collaborative,Eastern Parkway/Brooklyn Museum,IRT Brooklyn Line,2004,New York City Architectural Artifacts from the Collection of the Brooklyn Museum,11238,Brooklyn,Object
+Jim Porter,Clinton/Washington Aves.,IND Crosstown Line,1998,Night and Day,11238,Brooklyn,Absract
+Danny Simmons,Clinton/Washington Aves.,IND Crosstown Line,,Safe Passage,11238,Brooklyn,Human
+Danny Simmons,Clinton/Washington Aves.,IND Crosstown Line,,Safe Passage,11238,Brooklyn,Absract
+Gwynne Duncan,Clinton/Washington Aves.,IND Crosstown Line,1998,Smith & 9th,11238,Brooklyn,Human
+Gwynne Duncan,Clinton/Washington Aves.,IND Crosstown Line,1998,Smith & 9th,11238,Brooklyn,Object
+Sameeh Alderazi,Clinton/Washington Aves.,IND Crosstown Line,2000,The Dream,11238,Brooklyn,Absract
+Sameeh Alderazi,Clinton/Washington Aves.,IND Crosstown Line,2000,The Dream,11238,Brooklyn,Landscape
+Student Artists,Clinton/Washington Aves.,IND Crosstown Line,1986,Title unknown,11238,Brooklyn,Absract
+Student Artists,Clinton/Washington Aves.,IND Crosstown Line,1986,Title unknown,11238,Brooklyn,Cityscape
+Ray Ring,Clark Street,IRT Brooklyn Line,1987,Clark Street Passage,11242,Brooklyn,Absract
+Anton van Dalen,Nevins Street,IRT Brooklyn Line,1997,Work & Nature,11243,Brooklyn,Human
+Anton van Dalen,Nevins Street,IRT Brooklyn Line,1997,Work & Nature,11243,Brooklyn,Animal
+Anton van Dalen,Nevins Street,IRT Brooklyn Line,1997,Work & Nature,11243,Brooklyn,Absract
+Anton van Dalen,Nevins Street,IRT Brooklyn Line,1997,Work & Nature,11243,Brooklyn,Landscape
+Anton van Dalen,Nevins Street,IRT Brooklyn Line,1997,Work & Nature,11243,Brooklyn,Floral
+Anton van Dalen,Nevins Street,IRT Brooklyn Line,1997,Work & Nature,11243,Brooklyn,Object
+Amy Pryor,138th Street (Mott Haven),IRT Woodlawn Line,2021,Day Into Night Into Day,11367,Queens,Absract
+Elisabeth Condon,Ditmars Boulevard,BMT Astoria Line,2018,Urban Idyll,11370,Queens,Floral
+Tom Patti,74th Street/Broadway,IRT Flushing Line,2004,Passage,11372,Queens,Absract
+Pablo Tauler,Woodhaven Boulevard/Queens Mall,IND Queens Boulevard Line,1996,In Memory of the Lost Battalion,11373,Queens,Absract
+John Cavanagh,61st Street/Woodside,IRT Flushing Line,1986,Commuting/Community,11377,Queens,Absract
+John Cavanagh,61st Street/Woodside,IRT Flushing Line,1986,Commuting/Community,11377,Queens,Cityscape
+John Cavanagh,61st Street/Woodside,IRT Flushing Line,1986,Commuting/Community,11377,Queens,Words
+Dimitri Gerakaris,61st Street/Woodside,IRT Flushing Line,1999,Woodside Continuum,11377,Queens,Absract
+Dimitri Gerakaris,61st Street/Woodside,IRT Flushing Line,1999,Woodside Continuum,11377,Queens,Landscape
+Laura F. Gibellini,"Seneca Avenue, Fresh Pond Road, Forest Avenue",BMT Myrtle Avenue Line,2014,Dom (Variations),11385,Queens,Object
+Verna Hart,Myrtle Avenue,BMT Nassau Street-Jamaica Line,1999,Jammin' Under the El,11385,Queens,Human
+Verna Hart,Myrtle Avenue,BMT Nassau Street-Jamaica Line,1999,Jammin' Under the El,11385,Queens,Absract
+Bill Brand,Myrtle Avenue,BMT 4th Avenue Line,1980,Masstransiscope,11385,Queens,Absract
+Esther Grillo,Howard Beach/JFK Airport,IND Rockaway Line,1992,In Search of Harmony Bay,11414,Queens,Animal
+Esther Grillo,Howard Beach/JFK Airport,IND Rockaway Line,1992,In Search of Harmony Bay,11414,Queens,Landscape
+Krystyna Spisak-Madejczyk,Union Turnpike/Kew Gardens,IND Queens Boulevard Line,,Underground Skies/Cloud Forest,11415,Queens,Absract
+Haresh Lalvani,88th Street-Boyd Avenue,IND Fulton Street Line,2015,MORPHING88,11417,Queens,Absract
+Béatrice Coron,104th Street-Oxford Ave.,IND Fulton Street Line,2015,On the Right Track,11417,Queens,Human
+Béatrice Coron,104th Street-Oxford Ave.,IND Fulton Street Line,2015,On the Right Track,11417,Queens,Absract
+Mia Pearlman,80th Street-Hudson Street,IND Fulton Street Line,2015,Soar,11417,Queens,Absract
+Ray King,Rockaway Boulevard,IND Fulton Street Line,2015,Connections,11419,Queens,Absract
+Linda Ganjian,111th Street-Greenwood Avenue,IND Fulton Street Line,2016,Home Sweet Home,11419,Queens,Cityscape
+Kathleen McCarthy,"102nd-104th Streets, Cypress Hills, Woodhaven Boulevard, 75th Street/Elderts Lane, 111th Street",BMT Nassau Street-Jamaica Line,1990,Five Points of Observation,11421,Queens,Absract
+Alfredo Ceibal,241st Street,IRT White Plains Road Line,2006,Permanent Residents and Visitors,11422,Queens,Animal
+Alfredo Ceibal,241st Street,IRT White Plains Road Line,2006,Permanent Residents and Visitors,11422,Queens,Absract
+Alfredo Ceibal,241st Street,IRT White Plains Road Line,2006,Permanent Residents and Visitors,11422,Queens,Landscape
+Reginald Polynice,179th Street,IND Queens Boulevard Line,1993,Our Spectrum of Support,11434,Queens,Human
+Briarwood Students,Briarwood/Van Wyck Boulevard,IND Queens Boulevard Line,,Beautifying Briarwood,11435,Queens,Human
+Briarwood Students,Briarwood/Van Wyck Boulevard,IND Queens Boulevard Line,,Beautifying Briarwood,11435,Queens,Absract
+Briarwood Students,Briarwood/Van Wyck Boulevard,IND Queens Boulevard Line,,Beautifying Briarwood,11435,Queens,Words
+Ik-Joong Kang,Main Street/Flushing,IRT Flushing Line,1998,Happy World,11435,Queens,Absract
+Sam Gilliam,Jamaica Center/Parsons-Archer,IND Queens Boulevard Line,1991,"Jamaica Center Station Riders, Blue",11451,Queens,Absract
+Jill Parisi,Beach 44th Street/Frank Avenue,IND Rockaway Line,2011,Coom Barooom,11691,Queens,Floral
+Mauricio Lopez,Beach 25th Street/Wavecrest,IND Rockaway Line,2011,Past/Present/Future,11691,Queens,Absract
+Jason Rohlf,Mott Avenue/Far Rockaway,IND Rockaway Line,2011,Respite,11691,Queens,Absract
+George Bates,Beach 36th Street/Edgemere,IND Rockaway Line,2011,Symphonic Convergence 1 & 2,11691,Queens,Absract
+Ingo Fast,Beach 67th Street/Gaston Avenue,IND Rockaway Line,2011,On and Off the Boardwalk,11692,Queens,Human
+Ingo Fast,Beach 67th Street/Gaston Avenue,IND Rockaway Line,2011,On and Off the Boardwalk,11692,Queens,Landscape
+Simon Levenson,Beach 60th Street/Straiton,IND Rockaway Line,2011,The Beaches of New York City,11692,Queens,Human
+Simon Levenson,Beach 60th Street/Straiton,IND Rockaway Line,2011,The Beaches of New York City,11692,Queens,Landscape
+Michael Miller,Beach 90th Street/Holland,IND Rockaway Line,2011,Surf Station 90,11693,Queens,Absract
+Callie Hirsch,Beach 105th Street/Seaside,IND Rockaway Line,2011,Vast,11693,Queens,Absract
+Duke Riley,Beach 98th Street/Playland,IND Rockaway Line,2011,Be Good or Be Gone,11694,Queens,Animal
+Duke Riley,Beach 98th Street/Playland,IND Rockaway Line,2011,Be Good or Be Gone,11694,Queens,Landscape
+Duke Riley,Beach 98th Street/Playland,IND Rockaway Line,2011,Be Good or Be Gone,11694,Queens,Object
+Kk Kozik,Rockaway Park/Beach 116th Street,IND Rockaway Line,2015,First on the Beach - Wednesday Night Fireworks,11694,Queens,Human
+Kk Kozik,Rockaway Park/Beach 116th Street,IND Rockaway Line,2015,First on the Beach - Wednesday Night Fireworks,11694,Queens,Landscape
