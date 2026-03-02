@@ -112,7 +112,7 @@ function drawHero() {
     const cx = padX + i * halfW + halfW / 2;
     const cy = HH / 2 - 20;
 
-    const dotsPerRow = Math.max(3, Math.floor(colWidth * 0.55 / DOT_STEP));
+    const dotsPerRow = Math.max(3, Math.floor(halfW * 0.55 / DOT_STEP));
     const totalRows  = Math.ceil(items.length / dotsPerRow);
     const matrixH    = totalRows * DOT_STEP;
 
@@ -168,119 +168,108 @@ function drawHero() {
 function drawCoordinateChart() {
   mainSvg.selectAll("*").remove();
 
-  const margin = { top: 30, right: 16, bottom: 90, left: 52 };
+  const margin = { top: 30, right: 20, bottom: 70, left: 52 };
   const plotW  = W - margin.left - margin.right;
   const plotH  = H - margin.top  - margin.bottom;
 
   const g = mainSvg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const nCats  = CATEGORY_ORDER.length;
-  const colGap = 28;                                      // px gap between columns
-  const colWidth = (plotW - colGap * (nCats - 1)) / nCats; // width per category
+  // ── Layout ──────────────────────────────────────────────────────────────────
+  const nCats    = CATEGORY_ORDER.length;
+  const colWidth = plotW / nCats;
 
-  const dotsPerRow = 4;  // fixed — keeps clusters narrow so columns stay separated
-  const maxItems   = d3.max(CATEGORY_ORDER, cat => (byCategory.get(cat) || []).length);
-  const maxRows    = Math.ceil(maxItems / dotsPerRow);
+  // Fixed dot sizing — large enough to see and hover
+  const DOT_SP = 14;   // step (size + gap)
+  const DOT_S  = 11;   // font-size for icon character
+  // Fit dots across 72% of each column — never fewer than 3, never more than 6
+  const perRow = Math.min(6, Math.max(3, Math.floor(colWidth * 0.72 / DOT_SP)));
 
-  const yScale = d3.scaleLinear()
-    .domain([0, maxRows])
-    .range([plotH, 0]);
+  const maxItems = d3.max(CATEGORY_ORDER, cat => (byCategory.get(cat) || []).length);
+  const maxRows  = Math.ceil(maxItems / perRow);
+  const colTop   = plotH - maxRows * DOT_SP;  // y where tallest column starts
 
-  const yTicks = d3.range(0, maxRows + 1, Math.ceil(maxRows / 5));
-
-  // ── Y axis ──
+  // ── Y axis ──────────────────────────────────────────────────────────────────
   g.append("line")
     .attr("class", "axis-line")
-    .attr("x1", 0).attr("y1", 0)
+    .attr("x1", 0).attr("y1", colTop)
     .attr("x2", 0).attr("y2", plotH);
 
-  // Y tick marks + labels
-  yTicks.forEach(rowCount => {
-    const artworkCount = rowCount * dotsPerRow;
-    const y = yScale(rowCount);
-
+  // Ticks at every 25 artworks, derived purely from geometry
+  d3.range(25, maxItems + 1, 25).forEach(count => {
+    const rows = Math.ceil(count / perRow);
+    const y    = plotH - rows * DOT_SP;
     g.append("line")
-      .attr("x1", -4).attr("y1", y)
-      .attr("x2",  0).attr("y2", y)
-      .attr("stroke", "#555")
-      .attr("stroke-width", 0.75);
-
+      .attr("x1", -5).attr("y1", y).attr("x2", 0).attr("y2", y)
+      .attr("stroke", "#888").attr("stroke-width", 0.75);
     g.append("text")
-      .attr("x", -7).attr("y", y)
-      .attr("text-anchor", "end")
-      .attr("dominant-baseline", "middle")
-      .attr("font-size", "10px")
-      .attr("font-family", "Georgia, serif")
-      .attr("fill", "#777")
-      .text(artworkCount > 0 ? artworkCount : "");
+      .attr("x", -8).attr("y", y)
+      .attr("text-anchor", "end").attr("dominant-baseline", "middle")
+      .attr("font-size", "9px").attr("font-family", "Georgia, serif")
+      .attr("fill", "#888")
+      .text(count);
   });
 
-  // Y axis title
   g.append("text")
-    .attr("transform", `translate(-32, ${plotH / 2}) rotate(-90)`)
+    .attr("transform", `translate(-40, ${(plotH + colTop) / 2}) rotate(-90)`)
     .attr("text-anchor", "middle")
-    .attr("font-size", "11px")
-    .attr("font-family", "Georgia, serif")
-    .attr("fill", "#777")
-    .attr("letter-spacing", "0.06em")
+    .attr("font-size", "9px").attr("font-family", "Georgia, serif")
+    .attr("fill", "#aaa").attr("letter-spacing", "0.06em")
     .text("NUMBER OF WORKS");
 
-  // ── X axis — ends at the right edge of the last column ──
-  const xAxisEnd = (nCats - 1) * (colWidth + colGap) + colWidth;
+  // ── X axis ──────────────────────────────────────────────────────────────────
   g.append("line")
     .attr("class", "axis-line")
     .attr("x1", 0).attr("y1", plotH)
-    .attr("x2", xAxisEnd).attr("y2", plotH);
+    .attr("x2", plotW).attr("y2", plotH);
 
-  // ── Dot columns + x-axis labels ──
+  // ── Dot columns ─────────────────────────────────────────────────────────────
   CATEGORY_ORDER.forEach((cat, i) => {
     const items = byCategory.get(cat) || [];
     const cfg   = CATEGORY_CONFIG[cat] || { icon: "●", color: "#999", label: cat };
-    const cx    = i * (colWidth + colGap) + colWidth / 2;  // gap-aware center
+    const cx    = (i + 0.5) * colWidth;
 
     const catG = g.append("g")
       .attr("class", `cat-group cat-${cat}`)
       .attr("transform", `translate(${cx}, 0)`);
 
-    items.forEach((d, j) => {
-      const col = j % dotsPerRow;
-      const row = Math.floor(j / dotsPerRow);
-      const dx  = (col - dotsPerRow / 2 + 0.5) * DOT_STEP;
-      const dy  = plotH - (row + 0.5) * DOT_STEP - 3;
+    items.forEach((artwork, j) => {
+      const col = j % perRow;
+      const row = Math.floor(j / perRow);
+      const dx  = (col - perRow / 2 + 0.5) * DOT_SP;
+      const dy  = plotH - (row + 0.5) * DOT_SP;
 
       catG.append("text")
+        .datum(artwork)                 // bind datum FIRST so event handler receives it
         .attr("class", "dot")
         .attr("data-cat", cat)
-        .attr("x", dx)
-        .attr("y", dy)
-        .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
-        .attr("font-size", `${DOT_SIZE}px`)
+        .attr("x", dx).attr("y", dy)
+        .attr("text-anchor", "middle").attr("dominant-baseline", "middle")
+        .attr("font-size", `${DOT_S}px`)
         .attr("fill", cfg.color)
         .text(cfg.icon)
-        .datum(d)
-        .on("mouseenter", (e, d) => showTooltip(e, d))
-        .on("mousemove",  (e)    => moveTooltip(e))
-        .on("mouseleave", ()     => hideTooltip());
+        .on("mouseenter", (event, d) => showTooltip(event, d))
+        .on("mousemove",  (event)    => moveTooltip(event))
+        .on("mouseleave", ()         => hideTooltip());
     });
 
+    // X tick
     g.append("line")
       .attr("x1", cx).attr("y1", plotH)
-      .attr("x2", cx).attr("y2", plotH + 4)
-      .attr("stroke", "#555")
-      .attr("stroke-width", 0.75);
+      .attr("x2", cx).attr("y2", plotH + 5)
+      .attr("stroke", "#888").attr("stroke-width", 0.75);
 
+    // Rotated label so 9 names don't collide
     g.append("text")
       .attr("class", "axis-label")
-      .attr("x", cx)
-      .attr("y", plotH + 18)
-      .text(cfg.label.toUpperCase());
+      .attr("transform", `translate(${cx},${plotH + 10}) rotate(40)`)
+      .attr("text-anchor", "start")
+      .text(cfg.label);
 
     g.append("text")
       .attr("class", "cat-count")
-      .attr("x", cx)
-      .attr("y", plotH + 34)
+      .attr("transform", `translate(${cx},${plotH + 10}) rotate(40)`)
+      .attr("text-anchor", "start").attr("dy", "1.3em")
       .text(items.length);
   });
 }

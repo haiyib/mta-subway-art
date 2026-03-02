@@ -9,21 +9,21 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-rendering: optimizeLegibility;
 
-    /* ── Grid paper background — fixed (does not scroll) ── */
-    background-color: #f7f7f2;
+    /* ── Grid paper background ── */
+    background-color: #f8f8f4;
     background-image:
-        linear-gradient(rgba(150, 180, 210, 0.45) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(150, 180, 210, 0.45) 1px, transparent 1px),
-        linear-gradient(rgba(150, 180, 210, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(150, 180, 210, 0.15) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-    background-attachment: fixed;
+        linear-gradient(rgba(140, 170, 205, 0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 170, 205, 0.5) 1px, transparent 1px),
+        linear-gradient(rgba(140, 170, 205, 0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 170, 205, 0.18) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
 }
 
 .content {
     max-width: 640px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 1.5em;
 }
 
 .header {
@@ -35,13 +35,19 @@ a {
 }
 
 .footer {
-    background: #f4f4f4;
-    color: #333;
+    background: #f0f0eb;
+    color: #555;
     text-align: center;
     font-size: 0.8em;
     margin-top: 4em;
-    padding: 4em 0;
-    width: 100%;
+    padding: 4em 1.5em;
+    /* ensure it spans the full viewport width regardless of parent */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
 }
 
 .footer p { padding-bottom: 0.4em; }
