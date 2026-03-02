@@ -138,7 +138,7 @@ code {
    ───────────────────────────────────────────────────────────── */
 .intro-box {
     max-width: 800px;
-    margin: 3em auto;
+    margin: 0.75em auto;
     padding: 1.5em 2em;
     background: rgba(255, 255, 255, 0.75);
     border-left: 3px solid #ffc3be;
@@ -146,6 +146,29 @@ code {
     font-size: 0.95em;
     line-height: 1.7;
     color: #333;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Photo block — between intro and scrolly
+   ───────────────────────────────────────────────────────────── */
+.photo-block {
+    max-width: 900px;
+    margin: 3em auto;
+    padding: 0 1.5em;
+}
+
+.photo-block img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+}
+
+.photo-block figcaption {
+    margin-top: 0.6em;
+    font-size: 0.78em;
+    color: #888;
+    text-align: left;
+    font-style: italic;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -176,7 +199,7 @@ code {
 
 #chart {
     width: 100%;
-    height: 90svh;
+    height: 96svh;
     display: block;
     overflow: visible;
 }
@@ -285,7 +308,7 @@ code {
    ───────────────────────────────────────────────────────────── */
 .axis-label {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 11px;
+    font-size: 13px;
     fill: #333;
     text-anchor: middle;
     letter-spacing: 0.05em;
@@ -293,7 +316,7 @@ code {
 
 .cat-count {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 10px;
+    font-size: 12px;
     fill: #888;
     text-anchor: middle;
 }
@@ -312,11 +335,95 @@ code {
 /* Dot states */
 .dot {
     cursor: pointer;
-    transition: transform 0.1s ease, opacity 0.25s ease;
+    transition: transform 0.1
+    s ease, opacity 0.25s ease;
+    transform-box: fill-box;       /* scale relative to the element's own bounding box */
+    transform-origin: center;      /* from its center, not the SVG origin */
 }
 
 .dot:hover { transform: scale(1.6); }
 .dot.dimmed { opacity: 0.07; }
+
+/* ─────────────────────────────────────────────────────────────
+   Borough map
+   ───────────────────────────────────────────────────────────── */
+#borough-section {
+    margin: 4em 0 0;
+}
+
+#borough-section h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 0.4em;
+    padding-top: 0.5em;
+}
+
+#borough-map-container {
+    position: relative;
+    max-width: 860px;
+    margin: 2em auto 0;
+    padding: 0 1.5em;
+}
+
+#borough-map-svg {
+    width: 100%;
+    aspect-ratio: 960 / 680;
+    display: block;
+}
+
+.borough-path {
+    stroke: #fff;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.borough-path:hover {
+    opacity: 0.8;
+}
+
+.borough-label {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 13px;
+    fill: #fff;
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+.borough-count {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 11px;
+    fill: rgba(255,255,255,0.85);
+    text-anchor: middle;
+    pointer-events: none;
+}
+
+#borough-tooltip {
+    position: fixed;
+    background: #ffffffee;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    pointer-events: none;
+    z-index: 200;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 0.8em;
+    transition: opacity 0.1s;
+    min-width: 140px;
+}
+
+#borough-tooltip.hidden { opacity: 0; }
+
+.bt-name {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: bold;
+    font-size: 1.05em;
+    margin-bottom: 4px;
+}
+
+.bt-count { color: #555; }
 
 /* ─────────────────────────────────────────────────────────────
    Responsive

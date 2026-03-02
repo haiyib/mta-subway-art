@@ -83,6 +83,7 @@ Papa.parse(DATA_PATH, {
 
     drawHero();
     drawCoordinateChart();
+    drawBoroughMap();
     initScrollama();
   },
   error: err => console.error("CSV load error:", err),
@@ -168,7 +169,7 @@ function drawHero() {
 function drawCoordinateChart() {
   mainSvg.selectAll("*").remove();
 
-  const margin = { top: 30, right: 20, bottom: 70, left: 52 };
+  const margin = { top: 30, right: 20, bottom: 55, left: 52 };
   const plotW  = W - margin.left - margin.right;
   const plotH  = H - margin.top  - margin.bottom;
 
@@ -180,8 +181,8 @@ function drawCoordinateChart() {
   const colWidth = plotW / nCats;
 
   // Fixed dot sizing — large enough to see and hover
-  const DOT_SP = 14;   // step (size + gap)
-  const DOT_S  = 11;   // font-size for icon character
+  const DOT_SP = 16;   // step (size + gap)
+  const DOT_S  = 13;   // font-size for icon character
   // Fit dots across 72% of each column — never fewer than 3, never more than 6
   const perRow = Math.min(6, Math.max(3, Math.floor(colWidth * 0.72 / DOT_SP)));
 
@@ -192,7 +193,7 @@ function drawCoordinateChart() {
   // ── Y axis ──────────────────────────────────────────────────────────────────
   g.append("line")
     .attr("class", "axis-line")
-    .attr("x1", 0).attr("y1", colTop)
+    .attr("x1", 0).attr("y1", colTop - 10)  /* extend 10px above tallest column */
     .attr("x2", 0).attr("y2", plotH);
 
   // Ticks at every 25 artworks, derived purely from geometry
@@ -205,23 +206,23 @@ function drawCoordinateChart() {
     g.append("text")
       .attr("x", -8).attr("y", y)
       .attr("text-anchor", "end").attr("dominant-baseline", "middle")
-      .attr("font-size", "9px").attr("font-family", "Georgia, serif")
+      .attr("font-size", "12px").attr("font-family", "Georgia, serif")
       .attr("fill", "#888")
       .text(count);
   });
 
   g.append("text")
-    .attr("transform", `translate(-40, ${(plotH + colTop) / 2}) rotate(-90)`)
+    .attr("transform", `translate(-42, ${(plotH + colTop) / 2}) rotate(-90)`)
     .attr("text-anchor", "middle")
-    .attr("font-size", "9px").attr("font-family", "Georgia, serif")
+    .attr("font-size", "12px").attr("font-family", "Georgia, serif")
     .attr("fill", "#aaa").attr("letter-spacing", "0.06em")
     .text("NUMBER OF WORKS");
 
   // ── X axis ──────────────────────────────────────────────────────────────────
   g.append("line")
     .attr("class", "axis-line")
-    .attr("x1", 0).attr("y1", plotH)
-    .attr("x2", plotW).attr("y2", plotH);
+    .attr("x1", -8).attr("y1", plotH)   /* extend 8px left past y-axis */
+    .attr("x2", plotW + 10).attr("y2", plotH);  /* extend 10px right past last column */
 
   // ── Dot columns ─────────────────────────────────────────────────────────────
   CATEGORY_ORDER.forEach((cat, i) => {
@@ -253,23 +254,25 @@ function drawCoordinateChart() {
         .on("mouseleave", ()         => hideTooltip());
     });
 
-    // X tick
+    // X tick — slightly longer
     g.append("line")
       .attr("x1", cx).attr("y1", plotH)
-      .attr("x2", cx).attr("y2", plotH + 5)
+      .attr("x2", cx).attr("y2", plotH + 8)
       .attr("stroke", "#888").attr("stroke-width", 0.75);
 
-    // Rotated label so 9 names don't collide
+    // Horizontal label
     g.append("text")
       .attr("class", "axis-label")
-      .attr("transform", `translate(${cx},${plotH + 10}) rotate(40)`)
-      .attr("text-anchor", "start")
+      .attr("x", cx)
+      .attr("y", plotH + 20)
+      .attr("text-anchor", "middle")
       .text(cfg.label);
 
     g.append("text")
       .attr("class", "cat-count")
-      .attr("transform", `translate(${cx},${plotH + 10}) rotate(40)`)
-      .attr("text-anchor", "start").attr("dy", "1.3em")
+      .attr("x", cx)
+      .attr("y", plotH + 33)
+      .attr("text-anchor", "middle")
       .text(items.length);
   });
 }
@@ -335,6 +338,101 @@ function moveTooltip(event) {
 
 function hideTooltip() {
   tooltip.classed("hidden", true);
+}
+
+// ─── BOROUGH MAP ─────────────────────────────────────────────────────────────
+
+function drawBoroughMap() {
+  // Reliable GitHub-hosted NYC boroughs GeoJSON (boro_name property)
+  const GEO_URL = "https://raw.githubusercontent.com/dwillis/nyc-maps/master/boroughs.geojson";
+
+  // Count artworks per borough from allData
+  const boroughCounts = {};
+  allData.forEach(d => {
+    const b = (d.borough || "").trim();
+    if (b) boroughCounts[b] = (boroughCounts[b] || 0) + 1;
+  });
+
+  // Normalize CSV "Bronx" → GeoJSON "The Bronx"
+  if (boroughCounts["Bronx"] && !boroughCounts["The Bronx"]) {
+    boroughCounts["The Bronx"] = boroughCounts["Bronx"];
+    delete boroughCounts["Bronx"];
+  }
+
+  const mapSvg = d3.select("#borough-map-svg");
+  const boroughTip = d3.select("#borough-tooltip");
+
+  d3.json(GEO_URL).then(geo => {
+    // Fixed coordinate space — CSS width:100% handles scaling
+    const W = 960;
+    const H = 680;
+    mapSvg.attr("viewBox", `0 0 ${W} ${H}`);
+
+    const projection = d3.geoMercator().fitSize([W, H], geo);
+    const path       = d3.geoPath().projection(projection);
+
+    const counts = Object.values(boroughCounts);
+    const colorScale = d3.scaleSequential()
+      .domain([0, d3.max(counts)])
+      .interpolator(d3.interpolate("#ffc3be", "#C0392B"));
+
+    // Detect which property holds the borough name
+    const sampleProps = geo.features[0]?.properties || {};
+    const nameKey = Object.keys(sampleProps).find(k =>
+      /boro/i.test(k) && /name/i.test(k)
+    ) || Object.keys(sampleProps)[0];
+
+    mapSvg.selectAll(".borough-path")
+      .data(geo.features)
+      .join("path")
+        .attr("class", "borough-path")
+        .attr("d", path)
+        .attr("fill", feat => {
+          const name  = feat.properties[nameKey];
+          const count = boroughCounts[name] || 0;
+          return colorScale(count);
+        })
+        .on("mouseenter", (event, feat) => {
+          const name  = feat.properties[nameKey];
+          const count = boroughCounts[name] || 0;
+          boroughTip
+            .html(`<div class="bt-name">${name}</div><div class="bt-count">${count} artwork${count !== 1 ? "s" : ""}</div>`)
+            .classed("hidden", false);
+          moveBoroughTip(event);
+        })
+        .on("mousemove", (event) => moveBoroughTip(event))
+        .on("mouseleave", () => boroughTip.classed("hidden", true));
+
+    // Labels centered on each borough
+    mapSvg.selectAll(".borough-label")
+      .data(geo.features)
+      .join("text")
+        .attr("class", "borough-label")
+        .attr("transform", feat => `translate(${path.centroid(feat)})`)
+        .attr("dy", "-0.3em")
+        .text(feat => feat.properties[nameKey]);
+
+    mapSvg.selectAll(".borough-count")
+      .data(geo.features)
+      .join("text")
+        .attr("class", "borough-count")
+        .attr("transform", feat => `translate(${path.centroid(feat)})`)
+        .attr("dy", "1em")
+        .text(feat => {
+          const count = boroughCounts[feat.properties[nameKey]] || 0;
+          return `${count} works`;
+        });
+
+  }).catch(err => console.error("Borough GeoJSON error:", err));
+}
+
+function moveBoroughTip(event) {
+  const ttW = 160, ttH = 60;
+  let x = event.clientX + 16;
+  let y = event.clientY - 10;
+  if (x + ttW > window.innerWidth)  x = event.clientX - ttW - 16;
+  if (y + ttH > window.innerHeight) y = window.innerHeight - ttH - 10;
+  d3.select("#borough-tooltip").style("left", x + "px").style("top", y + "px");
 }
 
 // ─── SCROLLAMA ───────────────────────────────────────────────────────────────
