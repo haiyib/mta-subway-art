@@ -112,7 +112,7 @@ function drawHero() {
     const cx = padX + i * halfW + halfW / 2;
     const cy = HH / 2 - 20;
 
-    const dotsPerRow = Math.max(4, Math.floor(halfW * 0.65 / DOT_STEP));
+    const dotsPerRow = Math.max(3, Math.floor(colWidth * 0.55 / DOT_STEP));
     const totalRows  = Math.ceil(items.length / dotsPerRow);
     const matrixH    = totalRows * DOT_STEP;
 
@@ -175,10 +175,11 @@ function drawCoordinateChart() {
   const g = mainSvg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const nCats    = CATEGORY_ORDER.length;
-  const colWidth = plotW / nCats;
+  const nCats  = CATEGORY_ORDER.length;
+  const colGap = 28;                                      // px gap between columns
+  const colWidth = (plotW - colGap * (nCats - 1)) / nCats; // width per category
 
-  const dotsPerRow = Math.max(3, Math.floor(colWidth * 0.72 / DOT_STEP));
+  const dotsPerRow = 4;  // fixed — keeps clusters narrow so columns stay separated
   const maxItems   = d3.max(CATEGORY_ORDER, cat => (byCategory.get(cat) || []).length);
   const maxRows    = Math.ceil(maxItems / dotsPerRow);
 
@@ -225,17 +226,18 @@ function drawCoordinateChart() {
     .attr("letter-spacing", "0.06em")
     .text("NUMBER OF WORKS");
 
-  // ── X axis ──
+  // ── X axis — ends at the right edge of the last column ──
+  const xAxisEnd = (nCats - 1) * (colWidth + colGap) + colWidth;
   g.append("line")
     .attr("class", "axis-line")
     .attr("x1", 0).attr("y1", plotH)
-    .attr("x2", plotW).attr("y2", plotH);
+    .attr("x2", xAxisEnd).attr("y2", plotH);
 
   // ── Dot columns + x-axis labels ──
   CATEGORY_ORDER.forEach((cat, i) => {
     const items = byCategory.get(cat) || [];
     const cfg   = CATEGORY_CONFIG[cat] || { icon: "●", color: "#999", label: cat };
-    const cx    = (i + 0.5) * colWidth;
+    const cx    = i * (colWidth + colGap) + colWidth / 2;  // gap-aware center
 
     const catG = g.append("g")
       .attr("class", `cat-group cat-${cat}`)
