@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MTA Subway Art — A Visual Census</title>
+  <title>MTA Subway Art</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
@@ -18,6 +18,20 @@
     <svg id="hero-chart"></svg>
   </section>
 
+  </section>  <!-- end of #hero -->
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TEXT BOX — between hero and headline
+  ════════════════════════════════════════════════════════════ -->
+  <div class="intro-box">
+    <p>Your text goes here.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADLINE + BYLINE + INTRO
+  ════════════════════════════════════════════════════════════ -->
+  <div class="content">
+
   <!-- ═══════════════════════════════════════════════════════════
        HEADLINE + BYLINE + INTRO
   ════════════════════════════════════════════════════════════ -->
@@ -30,7 +44,7 @@
     </div>
 
     <div class="byline">
-      <p>By <a href="#">Haiyi Bi</a> 
+      <p>By <a href="#">Haiyi Bi</a></p>
     </div>
 
     <p>
@@ -100,9 +114,10 @@
     </p>
   </div>
 
-  <div class="footer">
-    <p><!-- TODO: Footer credits, data source links --></p>
-  </div>
+  <footer class="footer">
+    <p> Data is from <a href="https://www.nycsubway.org/perl/artwork">Subway Art Guide</a>, idea, sort and data analysis is a group work done by Craig Bonder, Haiyi Bi, Melinda Yao, Mika Yassur and Ziyuan Yin. </p>
+    <p> Copyright © 2026 Haiyi Bi. All rights reserved.</p>
+  </footer>
 
   <!-- Dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>

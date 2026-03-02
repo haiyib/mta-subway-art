@@ -25,8 +25,8 @@ const CATEGORY_ORDER = [
 
 const HERO_CATEGORIES = ["abstract", "floral"];
 
-const DOT_SIZE = 8;
-const DOT_GAP  = 2;
+const DOT_SIZE = 11;
+const DOT_GAP  = 4;
 const DOT_STEP = DOT_SIZE + DOT_GAP;
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
@@ -168,7 +168,7 @@ function drawHero() {
 function drawCoordinateChart() {
   mainSvg.selectAll("*").remove();
 
-  const margin = { top: 30, right: 16, bottom: 72, left: 44 };
+  const margin = { top: 30, right: 16, bottom: 90, left: 52 };
   const plotW  = W - margin.left - margin.right;
   const plotH  = H - margin.top  - margin.bottom;
 
@@ -209,7 +209,7 @@ function drawCoordinateChart() {
       .attr("x", -7).attr("y", y)
       .attr("text-anchor", "end")
       .attr("dominant-baseline", "middle")
-      .attr("font-size", "8px")
+      .attr("font-size", "10px")
       .attr("font-family", "Georgia, serif")
       .attr("fill", "#777")
       .text(artworkCount > 0 ? artworkCount : "");
@@ -219,7 +219,7 @@ function drawCoordinateChart() {
   g.append("text")
     .attr("transform", `translate(-32, ${plotH / 2}) rotate(-90)`)
     .attr("text-anchor", "middle")
-    .attr("font-size", "9px")
+    .attr("font-size", "11px")
     .attr("font-family", "Georgia, serif")
     .attr("fill", "#777")
     .attr("letter-spacing", "0.06em")
@@ -272,13 +272,13 @@ function drawCoordinateChart() {
     g.append("text")
       .attr("class", "axis-label")
       .attr("x", cx)
-      .attr("y", plotH + 14)
+      .attr("y", plotH + 18)
       .text(cfg.label.toUpperCase());
 
     g.append("text")
       .attr("class", "cat-count")
       .attr("x", cx)
-      .attr("y", plotH + 25)
+      .attr("y", plotH + 34)
       .text(items.length);
   });
 }

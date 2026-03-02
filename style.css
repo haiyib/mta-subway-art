@@ -4,7 +4,6 @@
     padding: 0;
 }
 
-
 body {
     font-size: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -19,8 +18,9 @@ body {
         linear-gradient(90deg, rgba(150, 180, 210, 0.15) 1px, transparent 1px);
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
     background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-    background-attachment: fixed; /* ← keeps the grid locked while scrolling */
+    background-attachment: fixed;
 }
+
 .content {
     max-width: 640px;
     margin: auto;
@@ -36,11 +36,17 @@ a {
 
 .footer {
     background: #f4f4f4;
+    color: #333;
     text-align: center;
     font-size: 0.8em;
     margin-top: 4em;
     padding: 4em 0;
+    width: 100%;
 }
+
+.footer p { padding-bottom: 0.4em; }
+.footer p:last-child { padding-bottom: 0; }
+.footer a { color: #f05349; }
 
 figure {
     margin: 0;
@@ -66,9 +72,7 @@ h1 {
     margin-top: 0.75em;
 }
 
-iframe, img, video {
-    max-width: 100%;
-}
+iframe, img, video { max-width: 100%; }
 
 p {
     line-height: 1.6;
@@ -96,7 +100,7 @@ code {
    Byline
    ───────────────────────────────────────────────────────────── */
 .byline {
-    font-size: 0.85em;
+    font-size: 1.1em;
     color: #666;
     padding-bottom: 1.2em;
 }
@@ -104,11 +108,11 @@ code {
 .byline a { color: #f05349; }
 
 /* ─────────────────────────────────────────────────────────────
-   Hero — two preview charts before headline
+   Hero
    ───────────────────────────────────────────────────────────── */
 #hero {
     width: 100%;
-    height: 70vh;
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,13 +128,28 @@ code {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   Intro text box
+   ───────────────────────────────────────────────────────────── */
+.intro-box {
+    max-width: 800px;
+    margin: 3em auto;
+    padding: 1.5em 2em;
+    background: rgba(255, 255, 255, 0.75);
+    border-left: 3px solid #ffc3be;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* ─────────────────────────────────────────────────────────────
    Scrollytelling layout — left sticky chart, right text
    ───────────────────────────────────────────────────────────── */
 #scrolly {
     position: relative;
     display: flex;
     gap: 0;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 1em;
 }
@@ -140,7 +159,7 @@ code {
     position: sticky;
     top: 0;
     height: 100svh;
-    width: 62%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,7 +177,7 @@ code {
 
 /* Scrolling steps — right */
 #steps {
-    width: 38%;
+    width: 30%;
     padding-left: 2em;
     padding-bottom: 4em;
     position: relative;
@@ -185,9 +204,10 @@ code {
 
 /* Step card */
 .step-content {
-    padding: 1.2em;
+    padding: 1.5em;
     background-color: #ffa880cc;
-    max-width: 300px;
+    width: 100%;
+    max-width: 100%;
     opacity: 0.55;
     transition: opacity 0.3s;
 }
@@ -198,15 +218,16 @@ code {
 
 .step-content h3 {
     font-family: 'Lora', Georgia, serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 0.6em 0;
     padding: 0;
 }
 
 .step-content p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     padding: 0;
+    line-height: 1.6;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -258,14 +279,15 @@ code {
    ───────────────────────────────────────────────────────────── */
 .axis-label {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 9px;
+    font-size: 11px;
     fill: #333;
     text-anchor: middle;
+    letter-spacing: 0.05em;
 }
 
 .cat-count {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 9px;
+    font-size: 10px;
     fill: #888;
     text-anchor: middle;
 }
@@ -315,18 +337,4 @@ code {
     }
 
     .step-content { max-width: 100%; }
-}
-
-/* ── Remove grid lines from all SVG charts ── */
-.grid line,
-.grid path,
-svg .grid line,
-svg .grid path {
-    stroke: none;
-    display: none;
-}
-
-/* Also hide any tick lines if you want a fully clean look */
-.tick line {
-    display: none;
 }
