@@ -62,20 +62,6 @@ This project pushed me into several areas I hadn't worked in before, with Claude
 
 ---
 
-## How to run locally
-
-```bash
-# Clone the repo
-git clone https://github.com/[your-github-username]/mta-subway-art.git
-cd mta-subway-art
-
-# Serve with any static file server (required — CSV fetch won't work from file://)
-python3 -m http.server 8000
-# then open http://localhost:8000
-```
-
----
-
 ## Tech stack
 
 - Claude Code
