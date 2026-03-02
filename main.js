@@ -353,11 +353,12 @@ function drawBoroughMap() {
     if (b) boroughCounts[b] = (boroughCounts[b] || 0) + 1;
   });
 
-  // Normalize CSV "Bronx" → GeoJSON "The Bronx"
-  if (boroughCounts["Bronx"] && !boroughCounts["The Bronx"]) {
-    boroughCounts["The Bronx"] = boroughCounts["Bronx"];
-    delete boroughCounts["Bronx"];
-  }
+  // Normalize names: strip leading "The " for consistent lookup
+  const normalizeName = name => name.replace(/^the\s+/i, "").trim();
+  const normalizedCounts = {};
+  Object.entries(boroughCounts).forEach(([k, v]) => {
+    normalizedCounts[normalizeName(k)] = v;
+  });
 
   const mapSvg = d3.select("#borough-map-svg");
   const boroughTip = d3.select("#borough-tooltip");
@@ -371,7 +372,7 @@ function drawBoroughMap() {
     const projection = d3.geoMercator().fitSize([W, H], geo);
     const path       = d3.geoPath().projection(projection);
 
-    const counts = Object.values(boroughCounts);
+    const counts = Object.values(normalizedCounts);
     const colorScale = d3.scaleSequential()
       .domain([0, d3.max(counts)])
       .interpolator(d3.interpolate("#ffc3be", "#C0392B"));
@@ -388,13 +389,12 @@ function drawBoroughMap() {
         .attr("class", "borough-path")
         .attr("d", path)
         .attr("fill", feat => {
-          const name  = feat.properties[nameKey];
-          const count = boroughCounts[name] || 0;
+          const count = normalizedCounts[normalizeName(feat.properties[nameKey])] || 0;
           return colorScale(count);
         })
         .on("mouseenter", (event, feat) => {
           const name  = feat.properties[nameKey];
-          const count = boroughCounts[name] || 0;
+          const count = normalizedCounts[normalizeName(name)] || 0;
           boroughTip
             .html(`<div class="bt-name">${name}</div><div class="bt-count">${count} artwork${count !== 1 ? "s" : ""}</div>`)
             .classed("hidden", false);
@@ -419,7 +419,7 @@ function drawBoroughMap() {
         .attr("transform", feat => `translate(${path.centroid(feat)})`)
         .attr("dy", "1em")
         .text(feat => {
-          const count = boroughCounts[feat.properties[nameKey]] || 0;
+          const count = normalizedCounts[normalizeName(feat.properties[nameKey])] || 0;
           return `${count} works`;
         });
 
